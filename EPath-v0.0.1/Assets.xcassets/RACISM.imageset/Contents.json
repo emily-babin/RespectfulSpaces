@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "RACISM.jpg",
+      "filename" : "RACISM.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "RACISM 1.jpg",
+      "filename" : "RACISM 1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "RACISM 2.jpg",
+      "filename" : "RACISM 2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
