@@ -15,15 +15,15 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     var selectedScenario:Int = 0
     
     let data: [Scenarios] = [
-        Scenarios(title: "Scenario 1 - DB", tag: "Tags: Action", imageName: "DB", description: ""),
+        Scenarios(title: "DB", tag: "Tags: Action", imageName: "DB", description: ""),
         
-        Scenarios(title: "Scenario 2 - Mr. Huang's Dilemma", tag: "Tags: Racism", imageName: "RACISM", description: "Huang, a skilled electrician, has years of experience and a strong work ethic, but he notices that his supervisor, Dave, consistently assigns him the toughest, least desirable tasks while giving easier jobs to less experienced workers. Huang, the only Chinese tradesperson on the crew, also overhears coworkers making racially insensitive jokes, and when he speaks up, he's told to \"toughen up\" and \"not take things so seriously.\" Despite his qualifications, Huang is repeatedly passed over for leadership opportunities, while others with less experience move up quickly."),
+        Scenarios(title: "Mr. Huang's Dilemma", tag: "Tags: Racism", imageName: "RACISM", description: "Huang, a skilled electrician, has years of experience and a strong work ethic, but he notices that his supervisor, Dave, consistently assigns him the toughest, least desirable tasks while giving easier jobs to less experienced workers. \nHuang, the only Chinese tradesperson on the crew, also overhears coworkers making racially insensitive jokes, and when he speaks up, he's told to \"toughen up\" and \"not take things so seriously.\" Despite his qualifications, Huang is repeatedly passed over for leadership opportunities, while others with less experience move up quickly."),
         
-        Scenarios(title: "Scenario 3 - Peter's Sunday", tag: "Tags: Religion", imageName: "RELIGION", description: ""),
+        Scenarios(title: "Peter's Sunday", tag: "Tags: Religion", imageName: "RELIGION", description: ""),
         
-        Scenarios(title: "Scenario 4 - Team 4D's Teamwork", tag: "Tags: Respect", imageName: "WORKPLACE", description: ""),
+        Scenarios(title: "Team 4D's Teamwork", tag: "Tags: Respect", imageName: "WORKPLACE", description: ""),
         
-        Scenarios(title: "Scenario 5 - Three Minions, One Heart", tag: "Tags: Empathy", imageName: "EMPATHY", description: "")
+        Scenarios(title: "Three Minions", tag: "Tags: Empathy", imageName: "EMPATHY", description: "")
     ]
     
     override func viewDidLoad() {
