@@ -28,7 +28,7 @@ class ScenariosDetailViewController: UIViewController {
         txt_Detail_Description.backgroundColor = UIColor.systemGray// Set background for chat bubble
         
         // Set text color for contrast
-        txt_Detail_Description.textColor = UIColor.white // Black text for readability
+        txt_Detail_Description.textColor = UIColor.white 
         
         // Apply rounded corners for the bubble effect
         txt_Detail_Description.layer.cornerRadius = 15
@@ -51,7 +51,7 @@ class ScenariosDetailViewController: UIViewController {
         //txt_Detail_Response.backgroundColor = UIColor.systemBlue// Set blue background for chat bubble
         
         // Set text color for contrast
-        txt_Detail_Response.textColor = UIColor.white // Black text for readability
+        txt_Detail_Response.textColor = UIColor.black // Black text for readability
         
         // Apply rounded corners for the bubble effect
         txt_Detail_Response.layer.cornerRadius = 15
