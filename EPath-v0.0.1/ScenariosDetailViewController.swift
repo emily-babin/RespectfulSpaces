@@ -25,7 +25,7 @@ class ScenariosDetailViewController: UIViewController {
         txt_Detail_Description.text = current_Scenario.description
         
         // Set background color for chat bubble effect
-        txt_Detail_Description.backgroundColor = UIColor.systemBlue// Set blue background for chat bubble
+        txt_Detail_Description.backgroundColor = UIColor.systemGray// Set background for chat bubble
         
         // Set text color for contrast
         txt_Detail_Description.textColor = UIColor.white // Black text for readability
@@ -46,8 +46,9 @@ class ScenariosDetailViewController: UIViewController {
         // Optional: Add padding around the text for better readability
         txt_Detail_Description.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         
+        /////////////////////////////////// BOTTOM TEXT VIEW
         // Set background color for chat bubble effect
-        txt_Detail_Response.backgroundColor = UIColor.systemBlue// Set blue background for chat bubble
+        //txt_Detail_Response.backgroundColor = UIColor.systemBlue// Set blue background for chat bubble
         
         // Set text color for contrast
         txt_Detail_Response.textColor = UIColor.white // Black text for readability
@@ -67,6 +68,11 @@ class ScenariosDetailViewController: UIViewController {
         
         // Optional: Add padding around the text for better readability
         txt_Detail_Response.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-
     }
+    
+    @IBAction func View_Tapped(_ sender: UITapGestureRecognizer) {
+        txt_Detail_Response.resignFirstResponder()
+    }
+    
+    
 }
