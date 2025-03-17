@@ -13,7 +13,10 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     @IBOutlet weak var table: UITableView!
     
     var selectedScenario:Int = 0
-    
+    /*let db = Firestore.firestore()
+    var selectedItem = ScenarioItem()*/
+    var listScenarioAll: [Scenarios] = []
+
     let data: [Scenarios] = [
         Scenarios(title: "DB", tag: "Tags: Action", imageName: "DB", description: ""),
         
@@ -28,19 +31,48 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*Task {
+            await loadData()
+        }*/
         table.dataSource = self
         table.delegate = self
+        
     }
+    //remove month
+    //replace with desc tag and imageName
+    /*func loadData() async{
+        
+        do {
+            let snapshot = try await db.collection("Scenarios").order(by: "month").getDocuments()
+    
+          for document in snapshot.documents {
+              let item = ScenarioItem(title: document.get("title") as! String,desc: document.get("description") as! String,content: document.get("content") as! String, month: document.get("month") as! Int)
+              
+              listScenarioAll.append(item)
+              if (item.month == month){
+                  listScenarioCurrent.append(item)
+              }
+          }
+        } catch {
+          print("Error getting documents: \(error)")
+        }
+        
+        self.table.reloadData()
+        
+    }*/
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //Returns how many items in the array which for now is 5
         return data.count
+        //return listScenarioAll.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let Scenarios = data[indexPath.row]
         let cell = table.dequeueReusableCell(withIdentifier: "scenario_cell", for:indexPath) as! CustomTableViewCell
+        
         cell.lbl_Title.text = Scenarios.title
         cell.lbl_Tag.text = Scenarios.tag
         cell.iconImageView.image = UIImage(named: Scenarios.imageName)
@@ -48,7 +80,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+            
         selectedScenario = indexPath.row
         self.performSegue(withIdentifier: "select_Scenario_Segue", sender: self)
         
