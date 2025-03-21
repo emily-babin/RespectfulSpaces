@@ -22,7 +22,7 @@ class ScenariosDetailViewController: UIViewController {
         // Set the title, image, and description
         lbl_Detail_Title.text = current_Scenario.title
         img_Detail.image = UIImage(named: current_Scenario.imageName)
-        txt_Detail_Description.text = current_Scenario.description
+        txt_Detail_Description.text = current_Scenario.content
         
         // Set background color for chat bubble effect
         txt_Detail_Description.backgroundColor = UIColor.systemGray// Set background for chat bubble
