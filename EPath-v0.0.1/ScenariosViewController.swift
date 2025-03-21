@@ -17,18 +17,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     let db = Firestore.firestore()
     var selectedItem = Scenarios()
     var listScenarioAll: [Scenarios] = []
-
-    /*let data: [Scenarios] = [
-        Scenarios(title: "DB", tag: "Tags: Action", imageName: "DB", description: ""),
-        
-        Scenarios(title: "Mr. Huang's Dilemma", tag: "Tags: Racism", imageName: "RACISM", description: "Huang, a skilled electrician, has years of experience and a strong work ethic, but he notices that his supervisor, Dave, consistently assigns him the toughest, least desirable tasks while giving easier jobs to less experienced workers. \nHuang, the only Chinese tradesperson on the crew, also overhears coworkers making racially insensitive jokes, and when he speaks up, he's told to \"toughen up\" and \"not take things so seriously.\" Despite his qualifications, Huang is repeatedly passed over for leadership opportunities, while others with less experience move up quickly."),
-        
-        Scenarios(title: "Peter's Sunday", tag: "Tags: Religion", imageName: "RELIGION", description: ""),
-        
-        Scenarios(title: "Team 4D's Teamwork", tag: "Tags: Respect", imageName: "WORKPLACE", description: ""),
-        
-        Scenarios(title: "Three Minions", tag: "Tags: Empathy", imageName: "EMPATHY", description: "")
-    ]*/
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +29,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
     }
     
-    //remove month
-    //replace with desc tag and imageName
     func loadData() async{
         
         do {
@@ -79,7 +65,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
         cell.lbl_Title.text = scenarios.title
         cell.lbl_Tag.text = scenarios.tag
-        cell.iconImageView.image = UIImage(named: scenarios.imageName)
+        //cell.iconImageView.image = UIImage(named: scenarios.imageName)
         
         return cell
     }
