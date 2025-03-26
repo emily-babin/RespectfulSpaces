@@ -10,7 +10,7 @@ import UIKit
 class ScenariosDetailViewController: UIViewController {
     
     @IBOutlet weak var lbl_Detail_Title: UILabel!
-    @IBOutlet weak var img_Detail: UIImageView!
+    //@IBOutlet weak var img_Detail: UIImageView!
     @IBOutlet weak var txt_Detail_Description: UITextView!
     @IBOutlet weak var txt_Detail_Response: UITextView!
     
@@ -26,7 +26,7 @@ class ScenariosDetailViewController: UIViewController {
         
         /////////////////////////////////// TOP LABEL
         // Set background color for chat bubble effect
-        //lbl_Detail_Description.backgroundColor = UIColor.systemGray// Set background for chat bubble
+        txt_Detail_Description.backgroundColor = UIColor.systemGray// Set background for chat bubble
         
         // Set text color for contrast
         txt_Detail_Description.textColor = UIColor.black
@@ -74,4 +74,19 @@ class ScenariosDetailViewController: UIViewController {
     }
     
     
+    @IBAction func btn_Next_Clicked(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "select_Scenario_Facts_Segue", sender: self)
+        
+    }
+    
+    
+    
+    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "select_Scenario_Facts_Segue") {
+            
+            let ScenariosFactsVC = segue.destination as! Scenarios_Facts_ViewController
+            
+        }
+    }*/
 }
