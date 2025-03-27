@@ -1,13 +1,13 @@
 //
-//  ScenariosStruct.swift
+//  Untitled.swift
 //  EPath-v0.0.1
 //
-//  Created by Carlos Pillas on 2025-03-04.
+//  Created by Carlos Pillas on 2025-03-26.
 //
 
 import Foundation
 
-class Scenarios {
+class ToolBox {
     
     var title: String
     var tag: String
