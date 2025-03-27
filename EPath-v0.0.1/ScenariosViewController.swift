@@ -27,12 +27,17 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         table.dataSource = self
         table.delegate = self
         
+        //This fixes the changing color when the list is not at the end
+        tabBarController?.tabBar.barTintColor = .systemBlue
+        tabBarController?.tabBar.isTranslucent = false
+        
+
     }
     
     func loadData() async{
         
         do {
-            let snapshot = try await db.collection("Scenarios").order(by: "month").getDocuments()
+            let snapshot = try await db.collection("Scenarios").order(by: "title").getDocuments()
     
           for document in snapshot.documents {
               let title = document.get("title") as? String ?? "No Title"
@@ -53,6 +58,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
     }
     
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //Returns how many items in the array which for now is 5
@@ -64,7 +70,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         let cell = table.dequeueReusableCell(withIdentifier: "scenario_cell", for:indexPath) as! CustomTableViewCell
         
         cell.lbl_Title.text = scenarios.title
-        cell.lbl_Tag.text = scenarios.tag
+        cell.lbl_Tag.text = scenarios.description
         cell.iconImageView.image = UIImage(named: scenarios.imageName)
         
         return cell
@@ -77,6 +83,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
     }
     
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "select_Scenario_Segue") {
             
@@ -85,4 +92,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
             ScenariosDetailVC.current_Scenario = listScenarioAll[selectedScenario]
         }
     }
+    
+
 }

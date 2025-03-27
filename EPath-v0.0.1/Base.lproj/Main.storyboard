@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Scenarios View Controller-->
+        <!--Scenarios-->
         <scene sceneID="0iR-2P-w9V">
             <objects>
                 <viewController id="jrf-ga-wXu" customClass="ScenariosViewController" customModule="EPath_v0_0_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,6 +19,8 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Wk-g6-drT">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" systemColor="labelColor"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="scenario_cell" rowHeight="121" id="0kY-OG-GMF" customClass="CustomTableViewCell" customModule="EPath_v0_0_1" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="121"/>
@@ -40,7 +42,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfI-Oq-jnM">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfI-Oq-jnM">
                                                     <rect key="frame" x="170" y="83.666666666666671" width="193" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -78,7 +80,7 @@
                             <constraint firstItem="iFF-mM-1vj" firstAttribute="trailing" secondItem="1Wk-g6-drT" secondAttribute="trailing" id="o8z-9d-iLi"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Km7-5E-WjQ"/>
+                    <navigationItem key="navigationItem" title="Scenarios" id="Km7-5E-WjQ"/>
                     <connections>
                         <outlet property="table" destination="1Wk-g6-drT" id="Qaq-Gd-eQr"/>
                         <segue destination="EAa-n7-pLP" kind="show" identifier="select_Scenario_Segue" id="915-oj-MWa"/>
@@ -88,7 +90,7 @@
             </objects>
             <point key="canvasLocation" x="1460.3053435114502" y="-118.30985915492958"/>
         </scene>
-        <!--Scenarios Detail View Controller-->
+        <!--Details-->
         <scene sceneID="6oM-X8-Rsc">
             <objects>
                 <viewController id="EAa-n7-pLP" customClass="ScenariosDetailViewController" customModule="EPath_v0_0_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,7 +114,6 @@
                                     <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <action selector="btn_Next_Clicked:" destination="EAa-n7-pLP" eventType="touchUpInside" id="dgV-6L-Fo0"/>
                                     <segue destination="t5j-m0-EVq" kind="show" identifier="select_Scenario_Facts_Segue" id="6oA-Ni-pgE"/>
                                 </connections>
                             </button>
@@ -166,7 +167,7 @@
                             <outletCollection property="gestureRecognizers" destination="w0c-9d-BXR" appends="YES" id="Dcb-lP-JG6"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="eWK-0a-oh5"/>
+                    <navigationItem key="navigationItem" title="Details" id="eWK-0a-oh5"/>
                     <connections>
                         <outlet property="lbl_Detail_Title" destination="Byd-YO-9ib" id="D6J-M1-YgP"/>
                         <outlet property="txt_Detail_Description" destination="5NQ-fX-48n" id="g4u-xp-PH6"/>
@@ -182,7 +183,7 @@
             </objects>
             <point key="canvasLocation" x="2341.2213740458014" y="-118.30985915492958"/>
         </scene>
-        <!--Scenarios Facts View Controller-->
+        <!--Facts-->
         <scene sceneID="Cce-mA-aTN">
             <objects>
                 <viewController id="t5j-m0-EVq" customClass="Scenarios_Facts_ViewController" customModule="EPath_v0_0_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -190,8 +191,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Qoe-c2-2VE">
-                                <rect key="frame" x="16" y="167" width="361" height="128"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="Qoe-c2-2VE">
+                                <rect key="frame" x="16" y="141" width="361" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -199,17 +200,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="15P-eN-I17">
-                                <rect key="frame" x="16" y="362" width="361" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-e7-ecl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-e7-ecl">
                                 <rect key="frame" x="16" y="568" width="361" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="15P-eN-I17">
+                                <rect key="frame" x="16" y="362" width="361" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
@@ -221,7 +222,7 @@
                         <viewLayoutGuide key="safeArea" id="gTJ-ok-4ia"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <navigationItem key="navigationItem" id="Ns3-6s-YDg"/>
+                    <navigationItem key="navigationItem" title="Facts" id="Ns3-6s-YDg"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GnD-BA-FXp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -270,7 +271,9 @@
         <scene sceneID="OLD-WP-5tM">
             <objects>
                 <navigationController id="teL-HP-mdy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ToolBox Talks" id="fRs-BC-Mwa"/>
+                    <tabBarItem key="tabBarItem" title="ToolBox Talks" image="wrench.and.screwdriver" catalog="system" selectedImage="wrench.and.screwdriver.fill" id="fRs-BC-Mwa">
+                        <color key="badgeColor" systemColor="systemPurpleColor"/>
+                    </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ke5-BI-vl5">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -283,7 +286,7 @@
             </objects>
             <point key="canvasLocation" x="534" y="658"/>
         </scene>
-        <!--Tool Box View Controller-->
+        <!--ToolBox Talks-->
         <scene sceneID="sGO-h5-OfQ">
             <objects>
                 <viewController id="dyY-Ul-gsY" customClass="ToolBoxViewController" customModule="EPath_v0_0_1" customModuleProvider="target" sceneMemberID="viewController">
@@ -294,6 +297,55 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LjG-tg-Udo">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="separatorColor" systemColor="labelColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="toolbox_cell" rowHeight="121" id="Tlt-RJ-XUc" customClass="CustomToolBoxTableViewCell" customModule="EPath_v0_0_1" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="121"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tlt-RJ-XUc" id="gSw-2n-pNd">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="121"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZII-2d-Eam">
+                                                    <rect key="frame" x="10" y="10" width="150" height="101"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="150" id="R7q-PJ-6Ff"/>
+                                                        <constraint firstAttribute="height" constant="101" id="v2z-Yx-MDe"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQr-TT-RD9" userLabel="lbl_Title_ToolBox">
+                                                    <rect key="frame" x="170" y="21" width="203" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSG-gk-rco" userLabel="lbl_Tag_ToolBox">
+                                                    <rect key="frame" x="170" y="83.666666666666671" width="193" height="20.333333333333329"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ZSG-gk-rco" secondAttribute="trailing" constant="10" id="5OR-Kz-rFr"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="DQr-TT-RD9" secondAttribute="bottom" constant="65" id="A30-YA-94n"/>
+                                                <constraint firstItem="DQr-TT-RD9" firstAttribute="leading" secondItem="ZII-2d-Eam" secondAttribute="trailing" constant="10" id="DOZ-YV-c3x"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ZSG-gk-rco" secondAttribute="bottom" constant="6" id="G6G-tl-8I0"/>
+                                                <constraint firstItem="ZII-2d-Eam" firstAttribute="top" secondItem="gSw-2n-pNd" secondAttribute="top" constant="10" id="HWH-Qq-epw"/>
+                                                <constraint firstItem="DQr-TT-RD9" firstAttribute="top" secondItem="gSw-2n-pNd" secondAttribute="topMargin" constant="10" id="ITC-BT-GnC"/>
+                                                <constraint firstItem="ZSG-gk-rco" firstAttribute="leading" secondItem="ZII-2d-Eam" secondAttribute="trailing" constant="10" id="Idu-Zb-CGW"/>
+                                                <constraint firstAttribute="bottom" secondItem="ZII-2d-Eam" secondAttribute="bottom" constant="10" id="LQ3-r7-aMg"/>
+                                                <constraint firstItem="ZII-2d-Eam" firstAttribute="leading" secondItem="gSw-2n-pNd" secondAttribute="leading" constant="10" id="eK4-qI-5QF"/>
+                                                <constraint firstAttribute="trailing" secondItem="DQr-TT-RD9" secondAttribute="trailing" constant="20" symbolic="YES" id="wd3-vU-4EP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="iconImageViewToolBox" destination="ZII-2d-Eam" id="yOP-9t-9vL"/>
+                                            <outlet property="lbl_Tag_Toolbox" destination="ZSG-gk-rco" id="Smq-Pt-sFY"/>
+                                            <outlet property="lbl_Title_Toolbox" destination="DQr-TT-RD9" id="pWM-y7-guY"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8YR-63-CJx"/>
@@ -305,7 +357,10 @@
                             <constraint firstItem="LjG-tg-Udo" firstAttribute="top" secondItem="8YR-63-CJx" secondAttribute="top" id="gEh-Ch-Vgy"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="gjU-NX-hGw"/>
+                    <navigationItem key="navigationItem" title="ToolBox Talks" id="gjU-NX-hGw"/>
+                    <connections>
+                        <outlet property="table_Toolbox" destination="LjG-tg-Udo" id="hTW-gX-BWM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSc-Oq-Vk2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -338,6 +393,8 @@
         <image name="house.fill" catalog="system" width="128" height="104"/>
         <image name="person.3" catalog="system" width="128" height="66"/>
         <image name="person.3.fill" catalog="system" width="128" height="66"/>
+        <image name="wrench.and.screwdriver" catalog="system" width="128" height="119"/>
+        <image name="wrench.and.screwdriver.fill" catalog="system" width="128" height="119"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
