@@ -41,7 +41,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         navBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
         
         //Set title text color
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]		
 
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         
@@ -53,6 +53,24 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
         //Same RGB color for consistency
         tabBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        //Create UITabBarItemAppearance to customize the item appearance
+        let itemAppearance = UITabBarItemAppearance()
+
+        //Change the unselected item color
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black] // For normal (unselected) text
+        itemAppearance.normal.iconColor = UIColor.black // For normal (unselected) icon
+
+        //Change the selected item color
+        //For selected text
+        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        itemAppearance.selected.iconColor = UIColor.white // For selected icon
+
+        //Apply the itemAppearance to the standard appearance
+        tabBarAppearance.stackedLayoutAppearance = itemAppearance
+        tabBarAppearance.inlineLayoutAppearance = itemAppearance
+        tabBarAppearance.compactInlineLayoutAppearance = itemAppearance
+
         
         //This adds all the changes above
         tabBarController?.tabBar.standardAppearance = tabBarAppearance
