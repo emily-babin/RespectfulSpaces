@@ -16,6 +16,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //To initialize firebase
         FirebaseApp.configure()
+     
+        // Change the tab bar item appearance globally
+        UITabBar.appearance().tintColor = .white // For selected items (filled icons)
+        UITabBar.appearance().unselectedItemTintColor = .white
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        
+        //Custom RGB color for BUILD NS
+        navBarAppearance.backgroundColor = UIColor(red: 222/255, green: 61/255, blue: 38/255, alpha: 1.0)
+  
         return true
     }
 

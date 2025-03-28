@@ -38,7 +38,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         let navBarAppearance = UINavigationBarAppearance()
         
         //Custom RGB color for BUILD NS
-        navBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        navBarAppearance.backgroundColor = UIColor(red: 222/255, green: 61/255, blue: 38/255, alpha: 1.0)
         
         //Set title text color
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
@@ -60,7 +60,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         //This will ensure the color of the tab bar does not change when scrolling
         tabBarController?.tabBar.scrollEdgeAppearance = tabBarAppearance
         
-        //initSearchController()
+//        initSearchController()
     }
     
     //SEARCH BAR
