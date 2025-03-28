@@ -19,6 +19,8 @@ class ScenariosDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    
+        
         // Set the title, image, and description
         lbl_Detail_Title.text = current_Scenario.title
         //img_Detail.image = UIImage(named: current_Scenario.imageName)
