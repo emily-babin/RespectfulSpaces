@@ -27,10 +27,29 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         table_Toolbox.dataSource = self
         table_Toolbox.delegate = self
         
-        //This fixes the changing color when the list is not at the end
-        tabBarController?.tabBar.barTintColor = .systemBlue
-        tabBarController?.tabBar.isTranslucent = false
+     
+        //Fix Navigation Bar Color Change Issue
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground() // Ensures solid background
         
+        // Custom RGB color
+        navBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white] //Set title text color
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        navigationController?.navigationBar.isTranslucent = false // Ensures it doesn't become transparent
+
+        //Fix Tab Bar Color
+        let tabBarAppearance = UITabBarAppearance()
+        
+        // Same RGB color for consistency
+        tabBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        //This fixes the changing color when the list is not at the end
+        tabBarController?.tabBar.isTranslucent = false
+        tabBarController?.tabBar.standardAppearance = tabBarAppearance
+        tabBarController?.tabBar.scrollEdgeAppearance = tabBarAppearance
 
     }
     
