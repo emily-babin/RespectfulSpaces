@@ -11,28 +11,72 @@ import FirebaseFirestore
 class ScenariosViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
     
   
+    
     @IBOutlet weak var table: UITableView!
     
     var selectedScenario:Int = 0
     let db = Firestore.firestore()
     var selectedItem = Scenarios()
     var listScenarioAll: [Scenarios] = []
+    var filteredScenarios: [Scenarios] = []
+    
+    let searchController = UISearchController()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         
+        super.viewDidLoad()
+
         Task {
             await loadData()
         }
+        
         table.dataSource = self
         table.delegate = self
         
-        //This fixes the changing color when the list is not at the end
-        tabBarController?.tabBar.barTintColor = .systemBlue
-        tabBarController?.tabBar.isTranslucent = false
+        //Fix Navigation Bar Color Change Issue
+        //Initialize a Appearance object which will hold all the design changes for the navBar
+        let navBarAppearance = UINavigationBarAppearance()
         
+        //Custom RGB color for BUILD NS
+        navBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        //Set title text color
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
 
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        
+        //This will ensure the color of the nav bar above does not change when scrolling
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
+        //Fix Tab Bar Color Change Issue
+        let tabBarAppearance = UITabBarAppearance()
+        
+        //Same RGB color for consistency
+        tabBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        //This adds all the changes above
+        tabBarController?.tabBar.standardAppearance = tabBarAppearance
+        
+        //This will ensure the color of the tab bar does not change when scrolling
+        tabBarController?.tabBar.scrollEdgeAppearance = tabBarAppearance
+        
+        //initSearchController()
     }
+    
+    //SEARCH BAR
+    /*func updateSearchResults(for searchController: UISearchController) {
+        <#code#>
+    }
+    
+    func initSearchController(){
+        searchController.loadViewIfNeeded()
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.enablesReturnKeyAutomatically = false
+        searchController.searchBar.returnKeyType = UIReturnKeyType.done
+        searchController.searchBar.scopeButtonTitles = ["All", "Scenarios", "Perspective"]
+        searchController.searchBar.delegate = self
+    }*/
     
     func loadData() async{
         
@@ -47,9 +91,11 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
               let content = document.get("content") as? String ?? "No Content"
             
               let Scenario = Scenarios(title:title, tag: tag, imageName:imageName, description:description, content:content)
+              
               listScenarioAll.append(Scenario)
               
           }
+            
         } catch {
           print("Error getting documents: \(error)")
         }
@@ -92,6 +138,4 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
             ScenariosDetailVC.current_Scenario = listScenarioAll[selectedScenario]
         }
     }
-    
-
 }
