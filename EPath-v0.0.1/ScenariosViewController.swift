@@ -58,8 +58,8 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         let itemAppearance = UITabBarItemAppearance()
 
         //Change the unselected item color
-        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black] // For normal (unselected) text
-        itemAppearance.normal.iconColor = UIColor.black // For normal (unselected) icon
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white] // For normal (unselected) text
+        itemAppearance.normal.iconColor = UIColor.white // For normal (unselected) icon
 
         //Change the selected item color
         //For selected text
