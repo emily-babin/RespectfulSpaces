@@ -27,6 +27,8 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         table_Toolbox.dataSource = self
         table_Toolbox.delegate = self
         
+        table_Toolbox.separatorStyle = .none
+        table_Toolbox.showsVerticalScrollIndicator = false
      
         let navBarAppearance = UINavigationBarAppearance()
         
@@ -69,6 +71,9 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

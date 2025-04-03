@@ -33,6 +33,11 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         table.dataSource = self
         table.delegate = self
         
+        table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
+        
+      
+        
         //Fix Navigation Bar Color Change Issue
         //Initialize a Appearance object which will hold all the design changes for the navBar
         let navBarAppearance = UINavigationBarAppearance()
@@ -122,6 +127,9 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -136,7 +144,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         cell.lbl_Title.text = scenarios.title
         cell.lbl_Tag.text = scenarios.description
         cell.iconImageView.image = UIImage(named: scenarios.imageName)
-        
+
         return cell
     }
     
