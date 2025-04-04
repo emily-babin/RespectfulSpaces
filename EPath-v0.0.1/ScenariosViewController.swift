@@ -36,7 +36,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
         
-      
         
         //Fix Navigation Bar Color Change Issue
         //Initialize a Appearance object which will hold all the design changes for the navBar
@@ -69,12 +68,12 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         //Change the selected item color
         //For selected text
         itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        itemAppearance.selected.iconColor = UIColor.white // For selected icon
+        itemAppearance.selected.iconColor = UIColor.white // For selected icon*/
 
         //Apply the itemAppearance to the standard appearance
         tabBarAppearance.stackedLayoutAppearance = itemAppearance
-        tabBarAppearance.inlineLayoutAppearance = itemAppearance
-        tabBarAppearance.compactInlineLayoutAppearance = itemAppearance
+        //tabBarAppearance.inlineLayoutAppearance = itemAppearance
+        //tabBarAppearance.compactInlineLayoutAppearance = itemAppearance
 
         
         //This adds all the changes above
