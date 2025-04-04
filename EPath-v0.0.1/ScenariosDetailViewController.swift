@@ -14,12 +14,13 @@ class ScenariosDetailViewController: UIViewController {
     @IBOutlet weak var txt_Detail_Description: UITextView!
     @IBOutlet weak var txt_Detail_Response: UITextView!
     
+    @IBOutlet weak var view_BackgroundResponse: UIView!
+    
+    
     var current_Scenario: Scenarios!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
         
         // Set the title, image, and description
         lbl_Detail_Title.text = current_Scenario.title
@@ -28,13 +29,13 @@ class ScenariosDetailViewController: UIViewController {
         
         /////////////////////////////////// TOP LABEL
         // Set background color for chat bubble effect
-        txt_Detail_Description.backgroundColor = UIColor.systemGray// Set background for chat bubble
+        //txt_Detail_Description.backgroundColor = UIColor.systemGray// Set background for chat bubble
         
         // Set text color for contrast
         txt_Detail_Description.textColor = UIColor.black
         
         // Apply rounded corners for the bubble effect
-        txt_Detail_Description.layer.cornerRadius = 15
+        txt_Detail_Description.layer.cornerRadius = 20
         txt_Detail_Description.layer.masksToBounds = true // Ensures the text is clipped within the bubble
         
         // Add a subtle shadow to create depth, making the bubble stand out
@@ -55,7 +56,7 @@ class ScenariosDetailViewController: UIViewController {
         txt_Detail_Response.textColor = UIColor.black // Black text for readability
         
         // Apply rounded corners for the bubble effect
-        txt_Detail_Response.layer.cornerRadius = 15
+        txt_Detail_Response.layer.cornerRadius = 20
         txt_Detail_Response.layer.masksToBounds = true // Ensures the text is clipped within the bubble
         
         // Add a subtle shadow to create depth, making the bubble stand out
@@ -69,26 +70,12 @@ class ScenariosDetailViewController: UIViewController {
         
         // Optional: Add padding around the text for better readability
         txt_Detail_Response.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        
+        view_BackgroundResponse.layer.cornerRadius = 20
+        
     }
     
     @IBAction func View_Tapped(_ sender: UITapGestureRecognizer) {
         txt_Detail_Response.resignFirstResponder()
     }
-    
-    
-    @IBAction func btn_Next_Clicked(_ sender: UIButton) {
-        
-        self.performSegue(withIdentifier: "select_Scenario_Facts_Segue", sender: self)
-        
-    }
-    
-    
-    
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "select_Scenario_Facts_Segue") {
-            
-            let ScenariosFactsVC = segue.destination as! Scenarios_Facts_ViewController
-            
-        }
-    }*/
 }
