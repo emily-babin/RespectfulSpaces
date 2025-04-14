@@ -20,6 +20,10 @@ class MainTabBarController: UITabBarController {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.backgroundColor = UIColor(red: 222/255, green: 61/255, blue: 38/255, alpha: 1.0)
 
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
            }
     
 

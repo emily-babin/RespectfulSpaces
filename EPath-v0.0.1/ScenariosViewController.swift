@@ -9,9 +9,7 @@ import UIKit
 import FirebaseFirestore
 
 class ScenariosViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
-    
-  
-    
+        
     @IBOutlet weak var table: UITableView!
     
     var selectedScenario:Int = 0
@@ -62,21 +60,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
 //        initSearchController()
     }
-    
-    //SEARCH BAR
-    /*func updateSearchResults(for searchController: UISearchController) {
-        <#code#>
-    }
-    
-    func initSearchController(){
-        searchController.loadViewIfNeeded()
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.returnKeyType = UIReturnKeyType.done
-        searchController.searchBar.scopeButtonTitles = ["All", "Scenarios", "Perspective"]
-        searchController.searchBar.delegate = self
-    }*/
     
     func loadData() async{
         

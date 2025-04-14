@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Custom RGB color for BUILD NS
         navBarAppearance.backgroundColor = UIColor(red: 222/255, green: 61/255, blue: 38/255, alpha: 1.0)
   
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        
         return true
     }
 
