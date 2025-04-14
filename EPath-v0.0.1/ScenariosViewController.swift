@@ -9,9 +9,7 @@ import UIKit
 import FirebaseFirestore
 
 class ScenariosViewController: UIViewController , UITableViewDelegate, UITableViewDataSource {
-    
-  
-    
+        
     @IBOutlet weak var table: UITableView!
     
     var selectedScenario:Int = 0
@@ -42,7 +40,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         let navBarAppearance = UINavigationBarAppearance()
         
         //Custom RGB color for BUILD NS
-        navBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        navBarAppearance.backgroundColor = UIColor(red: 222/255, green: 61/255, blue: 38/255, alpha: 1.0)
         
         //Set title text color
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]		
@@ -82,23 +80,8 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         //This will ensure the color of the tab bar does not change when scrolling
         tabBarController?.tabBar.scrollEdgeAppearance = tabBarAppearance
         
-        //initSearchController()
+//        initSearchController()
     }
-    
-    //SEARCH BAR
-    /*func updateSearchResults(for searchController: UISearchController) {
-        <#code#>
-    }
-    
-    func initSearchController(){
-        searchController.loadViewIfNeeded()
-        searchController.searchResultsUpdater = self
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.enablesReturnKeyAutomatically = false
-        searchController.searchBar.returnKeyType = UIReturnKeyType.done
-        searchController.searchBar.scopeButtonTitles = ["All", "Scenarios", "Perspective"]
-        searchController.searchBar.delegate = self
-    }*/
     
     func loadData() async{
         
