@@ -27,29 +27,21 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         table_Toolbox.dataSource = self
         table_Toolbox.delegate = self
         
+        table_Toolbox.separatorStyle = .none
+        table_Toolbox.showsVerticalScrollIndicator = false
      
-        //Fix Navigation Bar Color Change Issue
         let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.configureWithOpaqueBackground() // Ensures solid background
         
-        // Custom RGB color
+        //Custom RGB color for BUILD NS
         navBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
         
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white] //Set title text color
-        navigationController?.navigationBar.standardAppearance = navBarAppearance
-        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationController?.navigationBar.isTranslucent = false // Ensures it doesn't become transparent
+        //Set title text color
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
 
-        //Fix Tab Bar Color
-        let tabBarAppearance = UITabBarAppearance()
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
         
-        // Same RGB color for consistency
-        tabBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
-        
-        //This fixes the changing color when the list is not at the end
-        tabBarController?.tabBar.isTranslucent = false
-        tabBarController?.tabBar.standardAppearance = tabBarAppearance
-        tabBarController?.tabBar.scrollEdgeAppearance = tabBarAppearance
+        //This will ensure the color of the nav bar above does not change when scrolling
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
 
     }
     
@@ -79,6 +71,9 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

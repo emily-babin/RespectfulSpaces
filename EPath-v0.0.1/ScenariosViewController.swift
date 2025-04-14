@@ -31,6 +31,10 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         table.dataSource = self
         table.delegate = self
         
+        table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
+        
+        
         //Fix Navigation Bar Color Change Issue
         //Initialize a Appearance object which will hold all the design changes for the navBar
         let navBarAppearance = UINavigationBarAppearance()
@@ -39,7 +43,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         navBarAppearance.backgroundColor = UIColor(red: 222/255, green: 61/255, blue: 38/255, alpha: 1.0)
         
         //Set title text color
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]		
 
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         
@@ -51,6 +55,24 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
         //Same RGB color for consistency
         tabBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        //Create UITabBarItemAppearance to customize the item appearance
+        let itemAppearance = UITabBarItemAppearance()
+
+        //Change the unselected item color
+        itemAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white] // For normal (unselected) text
+        itemAppearance.normal.iconColor = UIColor.white // For normal (unselected) icon
+
+        //Change the selected item color
+        //For selected text
+        itemAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        itemAppearance.selected.iconColor = UIColor.white // For selected icon*/
+
+        //Apply the itemAppearance to the standard appearance
+        tabBarAppearance.stackedLayoutAppearance = itemAppearance
+        //tabBarAppearance.inlineLayoutAppearance = itemAppearance
+        //tabBarAppearance.compactInlineLayoutAppearance = itemAppearance
+
         
         //This adds all the changes above
         tabBarController?.tabBar.standardAppearance = tabBarAppearance
@@ -87,6 +109,9 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -101,7 +126,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         cell.lbl_Title.text = scenarios.title
         cell.lbl_Tag.text = scenarios.description
         cell.iconImageView.image = UIImage(named: scenarios.imageName)
-        
+
         return cell
     }
     
