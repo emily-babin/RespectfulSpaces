@@ -44,11 +44,14 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
         //Set title text color
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]		
-
+        
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         
         //This will ensure the color of the nav bar above does not change when scrolling
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
+        //This changes the color of the back button up in navigationw
+        navigationController?.navigationBar.tintColor = UIColor.white
         
         //Fix Tab Bar Color Change Issue
         let tabBarAppearance = UITabBarAppearance()
@@ -73,7 +76,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         //tabBarAppearance.inlineLayoutAppearance = itemAppearance
         //tabBarAppearance.compactInlineLayoutAppearance = itemAppearance
 
-        
         //This adds all the changes above
         tabBarController?.tabBar.standardAppearance = tabBarAppearance
         
