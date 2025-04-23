@@ -14,10 +14,6 @@ class Scenarios_Facts_ViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        navigationController?.popViewController(animated: true)
-    }
 
     /*
     // MARK: - Navigation
