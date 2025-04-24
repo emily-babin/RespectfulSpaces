@@ -21,7 +21,7 @@ class ScenariosDetailViewController: UIViewController {
     
     @IBOutlet weak var lbl_Other_Response: UILabel!
     @IBOutlet weak var txt_Facts: UITextView!
-    
+    @IBOutlet weak var view_Other_Responses: UIView!
     
     var current_Scenario: Scenarios!
 
@@ -97,21 +97,24 @@ class ScenariosDetailViewController: UIViewController {
         
         ///////////FACTS VIEW
         txt_Facts.layer.cornerRadius = 20
-        txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        //txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         txt_Facts.isScrollEnabled = false
         txt_Facts.text = current_Scenario.content
-        txt_Facts.sizeToFit()
+        
         /*txt_Facts.layer.masksToBounds = false
         txt_Facts.layer.shadowColor = UIColor.red.cgColor
         txt_Facts.layer.shadowOffset = CGSize(width: 0, height: 2)
         txt_Facts.layer.shadowOpacity = 0.2
         txt_Facts.layer.shadowRadius = 5*/
+        
+        view_Other_Responses.layer.cornerRadius = 20
 
     }
     
     override func viewDidAppear(_ animated: Bool) {
         lbl_Other_Response.isHidden = true
         txt_Facts.isHidden = true
+       
     }
     
     @IBAction func View_Tapped(_ sender: UITapGestureRecognizer) {
@@ -122,8 +125,9 @@ class ScenariosDetailViewController: UIViewController {
         lbl_Other_Response.isHidden = false
         txt_Facts.isHidden = false
         scrollView.isScrollEnabled = true
+        
         DispatchQueue.main.async {
-            var paddedFrame = self.txt_Facts.frame
+            var paddedFrame = self.view_Other_Responses.frame
             //paddedFrame.origin.y -= 20   // Move the scroll target 20pts higher (scrolls a bit more)
             paddedFrame.size.height += 20  // In case you want extra space below too
             self.scrollView.scrollRectToVisible(paddedFrame, animated: true)
