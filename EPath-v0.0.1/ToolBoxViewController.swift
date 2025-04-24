@@ -74,16 +74,30 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let spacer = UIView()
+        spacer.backgroundColor = .clear
+        return spacer
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1 // spacing between cells
+    }
+  
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        //Returns how many items in the array which for now is 5
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return listToolBoxAll.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let toolbox = listToolBoxAll[indexPath.row]
+        let toolbox = listToolBoxAll[indexPath.section]
         let cell = table_Toolbox.dequeueReusableCell(withIdentifier: "toolbox_cell", for:indexPath) as! CustomToolBoxTableViewCell
         
         cell.lbl_Title_Toolbox.text = toolbox.title

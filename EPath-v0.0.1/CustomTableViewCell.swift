@@ -16,17 +16,20 @@ class CustomTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    
-        backgroundColor = .white
-   
-        view_background.layer.masksToBounds = true
-        view_background.backgroundColor = .systemGray5
-    
-        //border
-        view_background.layer.borderColor = UIColor.systemBackground.cgColor
-        view_background.layer.borderWidth = 10
-        
         view_background.layer.cornerRadius = 20
         
+        //this removes the highlight when selecting a row
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
+        
+        //backgroundColor = .white
+   
+        //view_background.layer.masksToBounds = true
+        //view_background.backgroundColor = .systemGray5
+    
+        //border
+        //view_background.layer.borderColor = UIColor.systemBackground.cgColor
+        //view_background.layer.borderWidth = 10
+        //view_background.layer.cornerRadius = 20
     }
+    
 }

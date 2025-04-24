@@ -30,7 +30,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6Q-Wo-a3f">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="121"/>
+                                                    <rect key="frame" x="8" y="0.0" width="377" height="121"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F1i-ar-6GE">
                                                             <rect key="frame" x="0.0" y="10" width="107" height="99"/>
@@ -39,13 +39,13 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f7b-Im-4pE">
-                                                            <rect key="frame" x="115" y="14.999999999999998" width="270" height="20.333333333333329"/>
+                                                            <rect key="frame" x="115" y="14.999999999999998" width="254" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tfI-Oq-jnM">
-                                                            <rect key="frame" x="115" y="86" width="270" height="18"/>
+                                                            <rect key="frame" x="115" y="86" width="254" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -67,8 +67,8 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="e6Q-Wo-a3f" firstAttribute="leading" secondItem="jpz-a6-NSz" secondAttribute="leading" id="IYT-1j-Zg5"/>
-                                                <constraint firstAttribute="trailing" secondItem="e6Q-Wo-a3f" secondAttribute="trailing" id="lwP-7V-YiG"/>
+                                                <constraint firstItem="e6Q-Wo-a3f" firstAttribute="leading" secondItem="jpz-a6-NSz" secondAttribute="leading" constant="8" id="IYT-1j-Zg5"/>
+                                                <constraint firstAttribute="trailing" secondItem="e6Q-Wo-a3f" secondAttribute="trailing" constant="8" id="lwP-7V-YiG"/>
                                                 <constraint firstAttribute="bottom" secondItem="e6Q-Wo-a3f" secondAttribute="bottom" id="m1g-0b-EZm"/>
                                                 <constraint firstItem="e6Q-Wo-a3f" firstAttribute="top" secondItem="jpz-a6-NSz" secondAttribute="top" id="rdu-Xa-RhK"/>
                                             </constraints>
@@ -168,10 +168,10 @@
                                                 </constraints>
                                             </view>
                                             <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2r-q1-XW5">
-                                                <rect key="frame" x="22" y="750" width="353" height="180"/>
+                                                <rect key="frame" x="22" y="750" width="353" height="146"/>
                                                 <color key="backgroundColor" red="0.78823529411764703" green="0.78823529411764703" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="180" id="N4k-1W-Fhp"/>
+                                                    <constraint firstAttribute="height" constant="146" id="N4k-1W-Fhp"/>
                                                 </constraints>
                                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
                                                 <color key="textColor" systemColor="labelColor"/>
@@ -196,7 +196,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="kwg-kv-A05" firstAttribute="top" secondItem="Ckh-aI-jy7" secondAttribute="bottom" constant="19" id="3xB-eg-fym"/>
-                                            <constraint firstAttribute="bottom" secondItem="r2r-q1-XW5" secondAttribute="bottom" constant="570" id="5H0-4W-2nS"/>
+                                            <constraint firstAttribute="bottom" secondItem="r2r-q1-XW5" secondAttribute="bottom" constant="604" id="5H0-4W-2nS"/>
                                             <constraint firstItem="Ckh-aI-jy7" firstAttribute="leading" secondItem="cG6-tM-adv" secondAttribute="leading" constant="22" id="6hd-mq-tCh"/>
                                             <constraint firstItem="Ckh-aI-jy7" firstAttribute="top" secondItem="rQO-mY-x7G" secondAttribute="bottom" constant="18.666666666666686" id="BSe-8w-cB2"/>
                                             <constraint firstItem="1gz-gV-DLt" firstAttribute="leading" secondItem="cG6-tM-adv" secondAttribute="leading" constant="22" id="H5R-D8-hLS"/>
@@ -260,66 +260,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2341.2213740458014" y="-118.30985915492958"/>
-        </scene>
-        <!--Facts-->
-        <scene sceneID="Cce-mA-aTN">
-            <objects>
-                <viewController id="t5j-m0-EVq" customClass="Scenarios_Facts_ViewController" customModule="EPath_v0_0_1" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NTw-zG-g7V">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qoe-c2-2VE">
-                                <rect key="frame" x="16" y="97" width="361" height="128"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="tMb-L7-DFs"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="15P-eN-I17">
-                                <rect key="frame" x="16" y="271" width="361" height="290"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="justified" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux6-e7-ecl">
-                                <rect key="frame" x="16" y="600" width="361" height="184"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="184" id="4gv-4H-DO2"/>
-                                </constraints>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="gTJ-ok-4ia"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="gTJ-ok-4ia" firstAttribute="bottom" secondItem="ux6-e7-ecl" secondAttribute="bottom" constant="34" id="335-Q0-Xt1"/>
-                            <constraint firstItem="15P-eN-I17" firstAttribute="top" secondItem="Qoe-c2-2VE" secondAttribute="bottom" constant="46" id="8t7-MR-VT2"/>
-                            <constraint firstItem="Qoe-c2-2VE" firstAttribute="leading" secondItem="NTw-zG-g7V" secondAttribute="leadingMargin" id="ClD-TA-mRP"/>
-                            <constraint firstItem="15P-eN-I17" firstAttribute="trailing" secondItem="ux6-e7-ecl" secondAttribute="trailing" id="HH5-2B-IhC"/>
-                            <constraint firstItem="15P-eN-I17" firstAttribute="leading" secondItem="ux6-e7-ecl" secondAttribute="leading" id="I5s-rG-DPo"/>
-                            <constraint firstItem="ux6-e7-ecl" firstAttribute="top" secondItem="15P-eN-I17" secondAttribute="bottom" constant="39" id="XnV-OS-IQj"/>
-                            <constraint firstItem="Qoe-c2-2VE" firstAttribute="trailing" secondItem="15P-eN-I17" secondAttribute="trailing" id="g56-rK-J0Q"/>
-                            <constraint firstItem="Qoe-c2-2VE" firstAttribute="trailing" secondItem="NTw-zG-g7V" secondAttribute="trailingMargin" id="rB9-eO-2Cj"/>
-                            <constraint firstItem="Qoe-c2-2VE" firstAttribute="top" secondItem="gTJ-ok-4ia" secondAttribute="top" constant="38" id="s6I-G8-VYq"/>
-                            <constraint firstItem="Qoe-c2-2VE" firstAttribute="leading" secondItem="15P-eN-I17" secondAttribute="leading" id="tMb-Yc-x1s"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Facts" id="Ns3-6s-YDg"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GnD-BA-FXp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3290.8396946564885" y="-118.30985915492958"/>
         </scene>
         <!--Home-->
         <scene sceneID="bbi-hk-iIk">
@@ -593,7 +533,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IVT-yy-hUc">
-                                                    <rect key="frame" x="0.0" y="0.0" width="393" height="121"/>
+                                                    <rect key="frame" x="8" y="0.0" width="377" height="121"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZII-2d-Eam">
                                                             <rect key="frame" x="0.0" y="12" width="107" height="99"/>
@@ -621,7 +561,7 @@
                                                         <constraint firstItem="DQr-TT-RD9" firstAttribute="top" secondItem="IVT-yy-hUc" secondAttribute="top" constant="15" id="6Gs-2R-WWT"/>
                                                         <constraint firstAttribute="bottom" secondItem="ZII-2d-Eam" secondAttribute="bottom" constant="10" id="9iu-Sf-1Qd"/>
                                                         <constraint firstAttribute="bottom" secondItem="ZSG-gk-rco" secondAttribute="bottom" constant="15" id="feh-pp-Gbb"/>
-                                                        <constraint firstAttribute="trailing" secondItem="DQr-TT-RD9" secondAttribute="trailing" constant="8" id="gvO-Ue-kmV"/>
+                                                        <constraint firstAttribute="trailing" secondItem="DQr-TT-RD9" secondAttribute="trailing" constant="-8" id="gvO-Ue-kmV"/>
                                                         <constraint firstItem="ZSG-gk-rco" firstAttribute="trailing" secondItem="DQr-TT-RD9" secondAttribute="trailing" id="yNa-Et-b1s"/>
                                                         <constraint firstItem="ZSG-gk-rco" firstAttribute="leading" secondItem="DQr-TT-RD9" secondAttribute="leading" id="yRS-PD-pBr"/>
                                                         <constraint firstItem="DQr-TT-RD9" firstAttribute="leading" secondItem="ZII-2d-Eam" secondAttribute="trailing" constant="8" id="yT1-QD-ecd"/>
@@ -629,10 +569,10 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="IVT-yy-hUc" firstAttribute="leading" secondItem="gSw-2n-pNd" secondAttribute="leading" id="1SH-O5-ZrC"/>
+                                                <constraint firstItem="IVT-yy-hUc" firstAttribute="leading" secondItem="gSw-2n-pNd" secondAttribute="leading" constant="8" id="1SH-O5-ZrC"/>
                                                 <constraint firstItem="IVT-yy-hUc" firstAttribute="top" secondItem="gSw-2n-pNd" secondAttribute="top" id="5Jd-Il-Mfl"/>
                                                 <constraint firstAttribute="bottom" secondItem="IVT-yy-hUc" secondAttribute="bottom" id="5P3-v3-cW2"/>
-                                                <constraint firstAttribute="trailing" secondItem="IVT-yy-hUc" secondAttribute="trailing" id="YiL-Zp-ZaG"/>
+                                                <constraint firstAttribute="trailing" secondItem="IVT-yy-hUc" secondAttribute="trailing" constant="8" id="YiL-Zp-ZaG"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
