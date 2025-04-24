@@ -73,8 +73,8 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
 
         //Apply the itemAppearance to the standard appearance
         tabBarAppearance.stackedLayoutAppearance = itemAppearance
-        //tabBarAppearance.inlineLayoutAppearance = itemAppearance
-        //tabBarAppearance.compactInlineLayoutAppearance = itemAppearance
+        tabBarAppearance.inlineLayoutAppearance = itemAppearance
+        tabBarAppearance.compactInlineLayoutAppearance = itemAppearance
 
         //This adds all the changes above
         tabBarController?.tabBar.standardAppearance = tabBarAppearance
@@ -82,7 +82,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         //This will ensure the color of the tab bar does not change when scrolling
         tabBarController?.tabBar.scrollEdgeAppearance = tabBarAppearance
         
-//        initSearchController()
+//      initSearchController()
     }
     
     func loadData() async{
@@ -110,19 +110,33 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         self.table.reloadData()
         
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
     }
 
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let spacer = UIView()
+        spacer.backgroundColor = .clear
+        return spacer
+    }
+
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 1 // spacing between cells
+    }
+  
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         //Returns how many items in the array which for now is 5
+        return 1
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
         return listScenarioAll.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let scenarios = listScenarioAll[indexPath.row]
+        let scenarios = listScenarioAll[indexPath.section]
         let cell = table.dequeueReusableCell(withIdentifier: "scenario_cell", for:indexPath) as! CustomTableViewCell
         
         cell.lbl_Title.text = scenarios.title
@@ -134,11 +148,9 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
-        selectedScenario = indexPath.row
+        selectedScenario = indexPath.section
         self.performSegue(withIdentifier: "select_Scenario_Segue", sender: self)
-        
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "select_Scenario_Segue") {

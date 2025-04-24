@@ -122,5 +122,11 @@ class ScenariosDetailViewController: UIViewController {
         lbl_Other_Response.isHidden = false
         txt_Facts.isHidden = false
         scrollView.isScrollEnabled = true
+        DispatchQueue.main.async {
+            var paddedFrame = self.txt_Facts.frame
+            //paddedFrame.origin.y -= 20   // Move the scroll target 20pts higher (scrolls a bit more)
+            paddedFrame.size.height += 20  // In case you want extra space below too
+            self.scrollView.scrollRectToVisible(paddedFrame, animated: true)
+        }
     }
 }

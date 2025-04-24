@@ -17,16 +17,9 @@ class CustomToolBoxTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        backgroundColor = .white
-
-        view_background_ToolBox.layer.masksToBounds = true
-        view_background_ToolBox.backgroundColor = .systemGray5
-    
-        //border
-        view_background_ToolBox.layer.borderColor = UIColor.systemBackground.cgColor
-        view_background_ToolBox.layer.borderWidth = 10
-        
         view_background_ToolBox.layer.cornerRadius = 20
-        
+        //this removes the highlight when selecting a row
+        self.selectionStyle = UITableViewCell.SelectionStyle.none
+
     }
 }
