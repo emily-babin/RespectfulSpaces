@@ -18,10 +18,10 @@ class ScenariosDetailViewController: UIViewController {
     
     @IBOutlet weak var view_BackgroundResponse: UIView!
     
-    
+    @IBOutlet weak var txt_Other_Response_Height: NSLayoutConstraint!
     @IBOutlet weak var lbl_Other_Response: UILabel!
-    @IBOutlet weak var txt_Facts: UITextView!
-    
+    @IBOutlet weak var txt_Other_Response: UITextView!
+    @IBOutlet weak var view_Other_Responses: UIView!
     
     var current_Scenario: Scenarios!
 
@@ -93,26 +93,22 @@ class ScenariosDetailViewController: UIViewController {
         
     
         
+        ///////////OTHER RESPONSES VIEW
         view_BackgroundResponse.layer.cornerRadius = 20
+        txt_Other_Response.layer.cornerRadius = 20
+        //txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        txt_Other_Response.isScrollEnabled = false
+        txt_Other_Response.text = current_Scenario.content
         
-        ///////////FACTS VIEW
-        txt_Facts.layer.cornerRadius = 20
-        txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        txt_Facts.isScrollEnabled = false
-        txt_Facts.text = current_Scenario.content
-        txt_Facts.sizeToFit()
         /*txt_Facts.layer.masksToBounds = false
         txt_Facts.layer.shadowColor = UIColor.red.cgColor
         txt_Facts.layer.shadowOffset = CGSize(width: 0, height: 2)
         txt_Facts.layer.shadowOpacity = 0.2
         txt_Facts.layer.shadowRadius = 5*/
-
+      
+        view_Other_Responses.layer.cornerRadius = 20
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        lbl_Other_Response.isHidden = true
-        txt_Facts.isHidden = true
-    }
     
     @IBAction func View_Tapped(_ sender: UITapGestureRecognizer) {
         txt_Detail_Response.resignFirstResponder()
@@ -120,12 +116,26 @@ class ScenariosDetailViewController: UIViewController {
     
     @IBAction func btn_Send(_ sender: UIButton) {
         lbl_Other_Response.isHidden = false
-        txt_Facts.isHidden = false
+        txt_Other_Response.isHidden = false
+        
+        //scrollview enable now so that user can go back up to look at content again
         scrollView.isScrollEnabled = true
+        
+        let fixedWidth = txt_Other_Response.frame.size.width
+        
+        //Calculate the new size for the text view based on its content, allowing unlimited height
+        let newSize = txt_Other_Response.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
+
+        
+        //greatestfinitemagnitude is used for the dynamic height based on the content
+        
+        //Update the height constraint of the text view to reflect the new calculated height
+        txt_Other_Response_Height.constant = newSize.height
+
         DispatchQueue.main.async {
-            var paddedFrame = self.txt_Facts.frame
-            //paddedFrame.origin.y -= 20   // Move the scroll target 20pts higher (scrolls a bit more)
-            paddedFrame.size.height += 20  // In case you want extra space below too
+            var paddedFrame = self.view_Other_Responses.frame
+            paddedFrame.size.height += 20
+            
             self.scrollView.scrollRectToVisible(paddedFrame, animated: true)
         }
     }
