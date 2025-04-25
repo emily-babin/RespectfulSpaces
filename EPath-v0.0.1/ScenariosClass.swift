@@ -14,15 +14,20 @@ class Scenarios {
     var imageName: String
     var description: String
     var content: String
-
+    var commonResponse: String
+    var facts:String
+    
+    
     // Initialize the class with a custom initializer
-    init(title: String, tag: String, imageName: String, description: String, content:String) {
+    init(title: String, tag: String, imageName: String, description: String, content:String, commonResponse:String, facts:String) {
         
         self.title = title
         self.tag = tag
         self.imageName = imageName
         self.description = description
         self.content = content
+        self.commonResponse = commonResponse
+        self.facts = facts
     }
     
     init() {
@@ -31,5 +36,7 @@ class Scenarios {
         self.imageName = ""
         self.description = ""
         self.content = ""
+        self.commonResponse = ""
+        self.facts = ""
     }
 }

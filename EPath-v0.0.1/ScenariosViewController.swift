@@ -92,12 +92,17 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     
           for document in snapshot.documents {
               let title = document.get("title") as? String ?? "No Title"
+              
               let tag = document.get("tag") as? String ?? "No Tag"
               let imageName = document.get("type") as? String ?? "No Image"
               let description = document.get("description") as? String ?? "No Description"
               let content = document.get("content") as? String ?? "No Content"
             
-              let Scenario = Scenarios(title:title, tag: tag, imageName:imageName, description:description, content:content)
+              let commonResponse = document.get("common") as? String ?? "No Response"
+              
+              let facts = document.get("facts") as? String ?? "No Facts"
+              
+              let Scenario = Scenarios(title:title, tag: tag, imageName:imageName, description:description, content:content, commonResponse: commonResponse, facts: facts)
               
               listScenarioAll.append(Scenario)
               

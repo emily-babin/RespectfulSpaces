@@ -69,7 +69,7 @@ class ScenariosDetailViewController: UIViewController {
         
        
 
-        /////////////////////////////////// BOTTOM TEXT VIEW
+        /////////////////////////////////// BOTTOM DETAILS TEXT VIEW
         // Set background color for chat bubble effect
         //txt_Detail_Response.backgroundColor = UIColor.systemBlue// Set blue background for chat bubble
     
@@ -98,7 +98,7 @@ class ScenariosDetailViewController: UIViewController {
         txt_Other_Response.layer.cornerRadius = 20
         //txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         txt_Other_Response.isScrollEnabled = false
-        txt_Other_Response.text = current_Scenario.content
+        txt_Other_Response.text = current_Scenario.commonResponse
         
         /*txt_Facts.layer.masksToBounds = false
         txt_Facts.layer.shadowColor = UIColor.red.cgColor
