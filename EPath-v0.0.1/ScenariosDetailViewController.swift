@@ -23,6 +23,12 @@ class ScenariosDetailViewController: UIViewController {
     @IBOutlet weak var txt_Other_Response: UITextView!
     @IBOutlet weak var view_Other_Responses: UIView!
     
+    
+    @IBOutlet weak var view_Facts: UIView!
+    @IBOutlet weak var txt_Facts_Height: NSLayoutConstraint!
+    @IBOutlet weak var txt_Facts: UITextView!
+    
+    
     var current_Scenario: Scenarios!
 
     override func viewDidLoad() {
@@ -98,7 +104,7 @@ class ScenariosDetailViewController: UIViewController {
         txt_Other_Response.layer.cornerRadius = 20
         //txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         txt_Other_Response.isScrollEnabled = false
-        txt_Other_Response.text = current_Scenario.commonResponse
+        txt_Other_Response.text = current_Scenario.content
         
         /*txt_Facts.layer.masksToBounds = false
         txt_Facts.layer.shadowColor = UIColor.red.cgColor
@@ -107,6 +113,10 @@ class ScenariosDetailViewController: UIViewController {
         txt_Facts.layer.shadowRadius = 5*/
       
         view_Other_Responses.layer.cornerRadius = 20
+        
+        view_Facts.layer.cornerRadius = 20
+        txt_Facts.text = current_Scenario.content
+        //txt_Detail_Description.text = current_Scenario.tags.joined(separator: ", ")
     }
     
     
@@ -124,16 +134,20 @@ class ScenariosDetailViewController: UIViewController {
         let fixedWidth = txt_Other_Response.frame.size.width
         
         //Calculate the new size for the text view based on its content, allowing unlimited height
+        
         let newSize = txt_Other_Response.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-
+        
+        let newSizeFacts = txt_Facts.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         
         //greatestfinitemagnitude is used for the dynamic height based on the content
         
         //Update the height constraint of the text view to reflect the new calculated height
+        
         txt_Other_Response_Height.constant = newSize.height
-
+        txt_Facts_Height.constant = newSizeFacts.height
+        
         DispatchQueue.main.async {
-            var paddedFrame = self.view_Other_Responses.frame
+            var paddedFrame = self.view_Facts.frame
             paddedFrame.size.height += 20
             
             self.scrollView.scrollRectToVisible(paddedFrame, animated: true)
