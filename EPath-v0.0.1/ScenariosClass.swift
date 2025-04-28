@@ -10,26 +10,33 @@ import Foundation
 class Scenarios {
     
     var title: String
-    var tag: String
     var imageName: String
     var description: String
     var content: String
-
+    var commonResponse: String
+    var facts:String
+    var tags: [String]
+    
+    
     // Initialize the class with a custom initializer
-    init(title: String, tag: String, imageName: String, description: String, content:String) {
+    init(title: String, imageName: String, description: String, content:String, commonResponse:String, facts:String, tags:[String]) {
         
         self.title = title
-        self.tag = tag
         self.imageName = imageName
         self.description = description
         self.content = content
+        self.commonResponse = commonResponse
+        self.facts = facts
+        self.tags = tags
     }
     
     init() {
         self.title = ""
-        self.tag = ""
         self.imageName = ""
         self.description = ""
         self.content = ""
+        self.commonResponse = ""
+        self.facts = ""
+        self.tags = []
     }
 }
