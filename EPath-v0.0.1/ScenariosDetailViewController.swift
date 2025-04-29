@@ -27,17 +27,16 @@ class ScenariosDetailViewController: UIViewController {
     @IBOutlet weak var view_Facts: UIView!
     @IBOutlet weak var txt_Facts_Height: NSLayoutConstraint!
     @IBOutlet weak var txt_Facts: UITextView!
-    
-    
+        
     var current_Scenario: Scenarios!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the title, image, and description
         lbl_Detail_Title.text = current_Scenario.title
         //img_Detail.image = UIImage(named: current_Scenario.imageName)
-        txt_Detail_Description.text = current_Scenario.content
+        txt_Detail_Description.text = current_Scenario.description
         
         //HIG DOES NOT WANT THE COLORS TO BE SET PROGRAMMATICALLY IF POSSIBLE
         //SHADOW EFFECT REMOVED
@@ -104,7 +103,7 @@ class ScenariosDetailViewController: UIViewController {
         txt_Other_Response.layer.cornerRadius = 20
         //txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         txt_Other_Response.isScrollEnabled = false
-        txt_Other_Response.text = current_Scenario.content
+        txt_Other_Response.text = current_Scenario.commonResponse
         
         /*txt_Facts.layer.masksToBounds = false
         txt_Facts.layer.shadowColor = UIColor.red.cgColor
@@ -115,7 +114,7 @@ class ScenariosDetailViewController: UIViewController {
         view_Other_Responses.layer.cornerRadius = 20
         
         view_Facts.layer.cornerRadius = 20
-        txt_Facts.text = current_Scenario.content
+        txt_Facts.text = current_Scenario.facts
         //txt_Detail_Description.text = current_Scenario.tags.joined(separator: ", ")
     }
     
@@ -125,8 +124,12 @@ class ScenariosDetailViewController: UIViewController {
     }
     
     @IBAction func btn_Send(_ sender: UIButton) {
-        lbl_Other_Response.isHidden = false
-        txt_Other_Response.isHidden = false
+        
+        view_Other_Responses.isHidden = false
+        //lbl_Other_Response.isHidden = false
+        //txt_Other_Response.isHidden = false
+        
+        view_Facts.isHidden = false
         
         //scrollview enable now so that user can go back up to look at content again
         scrollView.isScrollEnabled = true
@@ -138,7 +141,7 @@ class ScenariosDetailViewController: UIViewController {
         let newSize = txt_Other_Response.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         
         let newSizeFacts = txt_Facts.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        
+                
         //greatestfinitemagnitude is used for the dynamic height based on the content
         
         //Update the height constraint of the text view to reflect the new calculated height
