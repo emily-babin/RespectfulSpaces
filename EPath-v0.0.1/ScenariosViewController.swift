@@ -60,12 +60,12 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
           // rebuild local array
           self.listScenarioAll = snapshot.documents.map { doc in
             Scenarios(
-              title: doc.get("title") as? String ?? "",
-              imageName: doc.get("type") as? String ?? "",
-              description: doc.get("description") as? String ?? "",
-              content: doc.get("content") as? String ?? "",
-              commonResponse: doc.get("common") as? String ?? "",
-              facts: doc.get("facts") as? String ?? "",
+              title: doc.get("title") as? String ?? "No Title",
+              imageName: doc.get("type") as? String ?? "EMPATHY",
+              description: doc.get("description") as? String ?? "No Description",
+              content: doc.get("content") as? String ?? "No content",
+              commonResponse: doc.get("common") as? String ?? "No Response",
+              facts: doc.get("facts") as? String ?? "No Facts",
               tags: doc.get("tag") as? [String] ?? []
             )
           }
