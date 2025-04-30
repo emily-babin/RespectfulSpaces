@@ -21,14 +21,17 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     
     var searchController = UISearchController()
     
+    private var scenariosListener: ListenerRegistration?
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
-        Task {
-            await loadData()
-        }
         
+        attachRealtimeListener()
+
+        //Task {
+          //  await loadData()
+        //}
         table.dataSource = self
         table.delegate = self
         table.separatorStyle = .none
@@ -39,7 +42,40 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         initSearchController()
     }
     
-    func loadData() async{
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        scenariosListener?.remove()
+    }
+    
+    func attachRealtimeListener() {
+      //detach any existing listener
+      scenariosListener?.remove()
+
+      scenariosListener = db.collection("Scenarios").order(by: "title").addSnapshotListener { [weak self] snapshot, error in
+          guard let self = self, let snapshot = snapshot else {
+            print("Listener error:", error ?? "unknown")
+            return
+          }
+
+          // rebuild local array
+          self.listScenarioAll = snapshot.documents.map { doc in
+            Scenarios(
+              title: doc.get("title") as? String ?? "",
+              imageName: doc.get("type") as? String ?? "",
+              description: doc.get("description") as? String ?? "",
+              content: doc.get("content") as? String ?? "",
+              commonResponse: doc.get("common") as? String ?? "",
+              facts: doc.get("facts") as? String ?? "",
+              tags: doc.get("tag") as? [String] ?? []
+            )
+          }
+
+          //re-apply any current search filter
+          self.updateSearchResults(for: self.searchController)
+        }
+    }
+    
+    /*func loadData() async{
         
         do {
             let snapshot = try await db.collection("Scenarios").order(by: "title").getDocuments()
@@ -70,9 +106,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         filteredScenarios = listScenarioAll
 
         self.table.reloadData()
-        
-        
-    }
+    }*/
     
     func initSearchController() {
        
@@ -100,15 +134,21 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     func updateSearchResults(for searchController: UISearchController) {
         
         let searchText = searchController.searchBar.text ?? ""
-
+        
         if searchText.isEmpty {
             filteredScenarios = listScenarioAll
+            self.table.reloadData()
+            
         } else {
-            filteredScenarios = listScenarioAll.filter {
-                $0.title.lowercased().contains(searchText.lowercased())
+            filteredScenarios = listScenarioAll.filter { scenario in
+                let matchesTitle = scenario.title.lowercased().contains(searchText.lowercased())
+                let matchesTags = scenario.tags.contains { tag in
+                    tag.lowercased().contains(searchText.lowercased())
+                }
+                return matchesTitle || matchesTags
             }
+            table.reloadData()
         }
-        table.reloadData()
     }
     
     
@@ -146,7 +186,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         cell.lbl_Title.text = scenarios.title
         cell.lbl_Tag.text = scenarios.description
         cell.iconImageView.image = UIImage(named: scenarios.imageName)
-
+        
         return cell
     }
     
