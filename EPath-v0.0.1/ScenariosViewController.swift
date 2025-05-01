@@ -40,11 +40,36 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         setupNavBar()
         setupTabBar()
         initSearchController()
+        table.keyboardDismissMode = .onDrag
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         scenariosListener?.remove()
+    }
+    
+    func initSearchController() {
+       
+        //searchResultsController: nil means the search results will be shown in the same view controller, not a separate one.
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        
+        //Assigns the current view controller (self) as the object that responds to search updates.
+        searchController.searchResultsUpdater = self
+        
+        //Places the search bar in the navigation bar of the view controller.
+        navigationItem.searchController = searchController
+        
+        //This line keeps the search bar always visible
+        navigationItem.hidesSearchBarWhenScrolling = false
+       
+        // Assign the search controller to the navigation item
+        navigationItem.searchController = searchController
+       
+        // Ensure the context is defined to prevent weird UI behavior
+        definesPresentationContext = true
     }
     
     func attachRealtimeListener() {
@@ -57,21 +82,23 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
             return
           }
 
-          // rebuild local array
-          self.listScenarioAll = snapshot.documents.map { doc in
-            Scenarios(
-              title: doc.get("title") as? String ?? "No Title",
-              imageName: doc.get("type") as? String ?? "EMPATHY",
-              description: doc.get("description") as? String ?? "No Description",
-              content: doc.get("content") as? String ?? "No content",
-              commonResponse: doc.get("common") as? String ?? "No Response",
-              facts: doc.get("facts") as? String ?? "No Facts",
-              tags: doc.get("tag") as? [String] ?? []
-            )
-          }
+              // rebuild local array
+              self.listScenarioAll = snapshot.documents.map { doc in
+                Scenarios(
+                  title: doc.get("title") as? String ?? "No Title",
+                  imageName: doc.get("type") as? String ?? "EMPATHY",
+                  description: doc.get("description") as? String ?? "No Description",
+                  content: doc.get("content") as? String ?? "No content",
+                  commonResponse: doc.get("common") as? String ?? "No Response",
+                  facts: doc.get("facts") as? String ?? "No Facts",
+                  tags: doc.get("tag") as? [String] ?? []
+                )
+              }
 
-          //re-apply any current search filter
-          self.updateSearchResults(for: self.searchController)
+              // Ensure UI updates happen on the main thread
+             DispatchQueue.main.async {
+                 self.updateSearchResults(for: self.searchController)
+             }
         }
     }
     
@@ -108,29 +135,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         self.table.reloadData()
     }*/
     
-    func initSearchController() {
-       
-        //searchResultsController: nil means the search results will be shown in the same view controller, not a separate one.
-        searchController = UISearchController(searchResultsController: nil)
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search"
-        
-        //Assigns the current view controller (self) as the object that responds to search updates.
-        searchController.searchResultsUpdater = self
-        
-        //Places the search bar in the navigation bar of the view controller.
-        navigationItem.searchController = searchController
-        
-        //This line keeps the search bar always visible
-        navigationItem.hidesSearchBarWhenScrolling = false
-       
-        // Assign the search controller to the navigation item
-        navigationItem.searchController = searchController
-       
-        // Ensure the context is defined to prevent weird UI behavior
-        definesPresentationContext = true
-    }
-    
+  
     func updateSearchResults(for searchController: UISearchController) {
         
         let searchText = searchController.searchBar.text ?? ""

@@ -10,16 +10,14 @@ import Foundation
 class ToolBox {
     
     var title: String
-    var tag: String
     var imageName: String
     var description: String
     var content: String
 
     // Initialize the class with a custom initializer
-    init(title: String, tag: String, imageName: String, description: String, content:String) {
+    init(title: String, imageName: String, description: String, content:String) {
         
         self.title = title
-        self.tag = tag
         self.imageName = imageName
         self.description = description
         self.content = content
@@ -27,7 +25,6 @@ class ToolBox {
     
     init() {
         self.title = ""
-        self.tag = ""
         self.imageName = ""
         self.description = ""
         self.content = ""
