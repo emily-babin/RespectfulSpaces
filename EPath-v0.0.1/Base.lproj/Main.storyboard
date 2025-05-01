@@ -115,7 +115,7 @@
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cG6-tM-adv">
-                                        <rect key="frame" x="-5" y="0.0" width="397" height="1050"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="397" height="1050"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQO-mY-x7G">
                                                 <rect key="frame" x="22" y="20" width="359" height="20.333333333333329"/>
@@ -270,7 +270,7 @@
                                 <constraints>
                                     <constraint firstItem="cG6-tM-adv" firstAttribute="trailing" secondItem="Uph-XT-k9b" secondAttribute="trailing" id="4kD-r6-NOQ"/>
                                     <constraint firstItem="cG6-tM-adv" firstAttribute="top" secondItem="Uph-XT-k9b" secondAttribute="top" id="YoW-h0-xZO"/>
-                                    <constraint firstItem="cG6-tM-adv" firstAttribute="leading" secondItem="Uph-XT-k9b" secondAttribute="leading" constant="-5" id="mso-QS-MA0"/>
+                                    <constraint firstItem="cG6-tM-adv" firstAttribute="leading" secondItem="Uph-XT-k9b" secondAttribute="leading" id="mso-QS-MA0"/>
                                     <constraint firstAttribute="bottom" secondItem="cG6-tM-adv" secondAttribute="bottom" id="qT0-Wp-KA4"/>
                                 </constraints>
                             </scrollView>
@@ -562,7 +562,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vxp-s1-NSm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="534" y="658"/>
+            <point key="canvasLocation" x="534" y="1012"/>
         </scene>
         <!--ToolBox Talks-->
         <scene sceneID="sGO-h5-OfQ">
@@ -572,9 +572,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LjG-tg-Udo">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="LjG-tg-Udo">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" systemColor="labelColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="toolbox_cell" rowHeight="121" id="Tlt-RJ-XUc" customClass="CustomToolBoxTableViewCell" customModule="EPath_v0_0_1" customModuleProvider="target">
@@ -588,19 +589,19 @@
                                                     <rect key="frame" x="8" y="0.0" width="377" height="121"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZII-2d-Eam">
-                                                            <rect key="frame" x="0.0" y="12" width="107" height="99"/>
+                                                            <rect key="frame" x="8" y="12" width="107" height="97"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="107" id="WCc-7c-Dq5"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DQr-TT-RD9" userLabel="lbl_Title_ToolBox">
-                                                            <rect key="frame" x="115" y="14.999999999999998" width="270" height="20.333333333333329"/>
+                                                            <rect key="frame" x="123" y="14.999999999999998" width="262" height="20.333333333333329"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSG-gk-rco" userLabel="lbl_Tag_ToolBox">
-                                                            <rect key="frame" x="115" y="88" width="270" height="18"/>
+                                                            <rect key="frame" x="123" y="88" width="262" height="18"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -609,11 +610,11 @@
                                                     <color key="backgroundColor" systemColor="systemGray5Color"/>
                                                     <constraints>
                                                         <constraint firstItem="ZII-2d-Eam" firstAttribute="top" secondItem="IVT-yy-hUc" secondAttribute="top" constant="12" id="1KQ-TT-7g8"/>
-                                                        <constraint firstItem="ZII-2d-Eam" firstAttribute="leading" secondItem="IVT-yy-hUc" secondAttribute="leading" id="3Lx-nu-p64"/>
                                                         <constraint firstItem="DQr-TT-RD9" firstAttribute="top" secondItem="IVT-yy-hUc" secondAttribute="top" constant="15" id="6Gs-2R-WWT"/>
-                                                        <constraint firstAttribute="bottom" secondItem="ZII-2d-Eam" secondAttribute="bottom" constant="10" id="9iu-Sf-1Qd"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ZII-2d-Eam" secondAttribute="bottom" constant="12" id="9iu-Sf-1Qd"/>
                                                         <constraint firstAttribute="bottom" secondItem="ZSG-gk-rco" secondAttribute="bottom" constant="15" id="feh-pp-Gbb"/>
                                                         <constraint firstAttribute="trailing" secondItem="DQr-TT-RD9" secondAttribute="trailing" constant="-8" id="gvO-Ue-kmV"/>
+                                                        <constraint firstItem="ZII-2d-Eam" firstAttribute="leading" secondItem="IVT-yy-hUc" secondAttribute="leading" constant="8" id="jm1-dJ-I9E"/>
                                                         <constraint firstItem="ZSG-gk-rco" firstAttribute="trailing" secondItem="DQr-TT-RD9" secondAttribute="trailing" id="yNa-Et-b1s"/>
                                                         <constraint firstItem="ZSG-gk-rco" firstAttribute="leading" secondItem="DQr-TT-RD9" secondAttribute="leading" id="yRS-PD-pBr"/>
                                                         <constraint firstItem="DQr-TT-RD9" firstAttribute="leading" secondItem="ZII-2d-Eam" secondAttribute="trailing" constant="8" id="yT1-QD-ecd"/>
@@ -649,11 +650,28 @@
                     <navigationItem key="navigationItem" title="ToolBox Talks" id="gjU-NX-hGw"/>
                     <connections>
                         <outlet property="table_Toolbox" destination="LjG-tg-Udo" id="hTW-gX-BWM"/>
+                        <segue destination="uEF-fw-o5G" kind="show" id="MAY-Gu-LSs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lSc-Oq-Vk2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1458.7786259541983" y="657.04225352112678"/>
+            <point key="canvasLocation" x="1460" y="1012"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="cn9-KG-oBw">
+            <objects>
+                <viewController id="uEF-fw-o5G" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DMC-sT-iLB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="Sox-DB-mNf"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NUA-3i-Dms"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="33U-2d-sas" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2341" y="1012"/>
         </scene>
         <!--Scenarios-->
         <scene sceneID="dWl-am-7Fz">
