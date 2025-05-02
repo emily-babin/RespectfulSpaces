@@ -28,25 +28,25 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         super.viewDidLoad()
         
         attachRealtimeListener()
-
-        //Task {
-          //  await loadData()
-        //}
-        table.dataSource = self
-        table.delegate = self
-        table.separatorStyle = .none
-        table.showsVerticalScrollIndicator = false
-        
+        setupTable()
         setupNavBar()
         setupTabBar()
         initSearchController()
+        
         table.keyboardDismissMode = .onDrag
-
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         scenariosListener?.remove()
+    }
+    
+    func setupTable() {
+        table.dataSource = self
+        table.delegate = self
+        table.separatorStyle = .none
+        table.showsVerticalScrollIndicator = false
+        table.keyboardDismissMode = .onDrag
     }
     
     func initSearchController() {
@@ -96,9 +96,9 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
               }
 
               // Ensure UI updates happen on the main thread
-             DispatchQueue.main.async {
+            DispatchQueue.main.async {
                  self.updateSearchResults(for: self.searchController)
-             }
+            }
         }
     }
     
@@ -152,7 +152,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
                 }
                 return matchesTitle || matchesTags
             }
-            table.reloadData()
+            self.table.reloadData()
         }
     }
     
