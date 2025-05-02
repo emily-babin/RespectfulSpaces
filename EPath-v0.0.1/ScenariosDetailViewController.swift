@@ -22,8 +22,7 @@ class ScenariosDetailViewController: UIViewController {
     @IBOutlet weak var lbl_Other_Response: UILabel!
     @IBOutlet weak var txt_Other_Response: UITextView!
     @IBOutlet weak var view_Other_Responses: UIView!
-    
-    
+        
     @IBOutlet weak var view_Facts: UIView!
     @IBOutlet weak var txt_Facts_Height: NSLayoutConstraint!
     @IBOutlet weak var txt_Facts: UITextView!
@@ -46,57 +45,14 @@ class ScenariosDetailViewController: UIViewController {
         //IF SET TO FALSE ON CHILD VIEW TEXTVIEW WILL NOT WORK PROPERLY ON LONG TEXTS
         
         /////////////////////////////////// TOP LABEL
-        // Set background color for chat bubble effect
-        //txt_Detail_Description.backgroundColor = UIColor.systemGray// Set background for chat bubble
-        
-        // Set text color for contrast
-        //txt_Detail_Description.textColor = UIColor.label
-        
         // Apply rounded corners for the bubble effect
         txt_Detail_Description.layer.cornerRadius = 20
-        //txt_Detail_Description.layer.masksToBounds = true // Ensures the text is clipped within the bubble
-        
         txt_Detail_Description.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         
-        /*
-        // Add a subtle shadow to create depth, making the bubble stand out
-        txt_Detail_Description.layer.shadowColor = UIColor.black.cgColor // Shadow color
-        
-       
-         
-         //Shadow's vertical offset
-        txt_Detail_Description.layer.shadowOffset = CGSize(width: 0, height: 2)
-    
-        txt_Detail_Description.layer.shadowOpacity = 0.2 // Soft shadow opacity
-        txt_Detail_Description.layer.shadowRadius = 5 // Soft blur radius for shadow
-       
-         */
-        
-       
-
-        /////////////////////////////////// BOTTOM DETAILS TEXT VIEW
-        // Set background color for chat bubble effect
-        //txt_Detail_Response.backgroundColor = UIColor.systemBlue// Set blue background for chat bubble
-    
-        // Set text color for contrast
-        //txt_Detail_Response.textColor = UIColor.label // Black text for readability
-        
+        /////////////////////////////////// DETAILS TEXT VIEW
         // Apply rounded corners for the bubble effect
         txt_Detail_Response.layer.cornerRadius = 20
-        txt_Detail_Response.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        /*
-        //txt_Detail_Response.layer.masksToBounds = true // Ensures the text is clipped within the bubble
-        // Add a subtle shadow to create depth, making the bubble stand out
-        txt_Detail_Response.layer.shadowColor = UIColor.black.cgColor // Shadow color
-        
-        //Shadow's vertical offset
-        txt_Detail_Response.layer.shadowOffset = CGSize(width: 0, height: 2)
-        
-        txt_Detail_Response.layer.shadowOpacity = 0.2 // Soft shadow opacity
-        txt_Detail_Response.layer.shadowRadius = 5 // Soft blur radius for shadow
-        */
-        
-    
+        //txt_Detail_Response.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         
         ///////////OTHER RESPONSES VIEW
         view_BackgroundResponse.layer.cornerRadius = 20
@@ -104,20 +60,13 @@ class ScenariosDetailViewController: UIViewController {
         //txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         txt_Other_Response.isScrollEnabled = false
         txt_Other_Response.text = current_Scenario.commonResponse
-        
-        /*txt_Facts.layer.masksToBounds = false
-        txt_Facts.layer.shadowColor = UIColor.red.cgColor
-        txt_Facts.layer.shadowOffset = CGSize(width: 0, height: 2)
-        txt_Facts.layer.shadowOpacity = 0.2
-        txt_Facts.layer.shadowRadius = 5*/
-      
+    
         view_Other_Responses.layer.cornerRadius = 20
         
         view_Facts.layer.cornerRadius = 20
         txt_Facts.text = current_Scenario.facts
         //txt_Detail_Description.text = current_Scenario.tags.joined(separator: ", ")
     }
-    
     
     @IBAction func View_Tapped(_ sender: UITapGestureRecognizer) {
         txt_Detail_Response.resignFirstResponder()
@@ -145,7 +94,6 @@ class ScenariosDetailViewController: UIViewController {
         //greatestfinitemagnitude is used for the dynamic height based on the content
         
         //Update the height constraint of the text view to reflect the new calculated height
-        
         txt_Other_Response_Height.constant = newSize.height
         txt_Facts_Height.constant = newSizeFacts.height
         
