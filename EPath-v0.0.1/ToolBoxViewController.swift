@@ -13,6 +13,7 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
     @IBOutlet weak var table_Toolbox: UITableView!
 
     var selectedToolBox: Int = 0
+    
     let db = Firestore.firestore()
     var selectedItem = ToolBox()
     var listToolBoxAll: [ToolBox] = []
@@ -24,13 +25,34 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTable()
+        setupNavBar()
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        selectedToolBox = indexPath.section
+        self.performSegue(withIdentifier: "select_ToolBox_Segue", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if (segue.identifier == "select_ToolBox_Segue") {
+            
+            let ToolBoxDetailVC = segue.destination as! ToolBoxDetailsViewController
+            
+            // Set the back button title before pushing the new view controller
+            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: filteredToolBox[selectedToolBox].title, style: .plain, target: nil, action: nil)
+            
+            ToolBoxDetailVC.current_ToolBox = filteredToolBox[selectedToolBox]
+        }
+    }
+    
+    func setupTable() {
         attachRealtimeListener()
         table_Toolbox.dataSource = self
         table_Toolbox.delegate = self
-        
-        initSearchController()
-        setupNavBar()
-        
         table_Toolbox.keyboardDismissMode = .onDrag
     }
     
@@ -158,6 +180,8 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         
         //This changes the color of the back button up in navigationw
         navigationController?.navigationBar.tintColor = UIColor.white
+        
+        initSearchController()
     }
     
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -168,12 +192,5 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
     }*/
     
     
-    /*override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if (segue.identifier == "select_Scenario_Segue") {
-            
-            let ScenariosDetailVC = segue.destination as! ScenariosDetailViewController
-            
-            ScenariosDetailVC.current_Scenario = listScenarioAll[selectedScenario]
-        }
-    }*/
+   
 }

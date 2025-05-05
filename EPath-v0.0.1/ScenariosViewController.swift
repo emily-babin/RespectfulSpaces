@@ -27,13 +27,9 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         
         super.viewDidLoad()
         
-        attachRealtimeListener()
         setupTable()
         setupNavBar()
         setupTabBar()
-        initSearchController()
-        
-        table.keyboardDismissMode = .onDrag
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -42,6 +38,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     }
     
     func setupTable() {
+        attachRealtimeListener()
         table.dataSource = self
         table.delegate = self
         table.separatorStyle = .none
@@ -207,13 +204,12 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
             
             let ScenariosDetailVC = segue.destination as! ScenariosDetailViewController
             
-            ScenariosDetailVC.current_Scenario = listScenarioAll[selectedScenario]
+            ScenariosDetailVC.current_Scenario = filteredScenarios[selectedScenario]
         }
     }
     
     
     func setupNavBar() {
-        
         //Fix Navigation Bar Color Change Issue
         //Initialize a Appearance object which will hold all the design changes for the navBar
         let navBarAppearance = UINavigationBarAppearance()
@@ -232,6 +228,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         //This changes the color of the back button up in navigationw
         navigationController?.navigationBar.tintColor = UIColor.white
         
+        initSearchController()
     }
 
     func setupTabBar() {
