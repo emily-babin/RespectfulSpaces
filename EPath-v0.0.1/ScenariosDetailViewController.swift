@@ -28,7 +28,8 @@ class ScenariosDetailViewController: UIViewController {
     @IBOutlet weak var txt_Facts: UITextView!
         
     var current_Scenario: Scenarios!
-    
+    var cornerRadius:CGFloat = 20
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,24 +47,24 @@ class ScenariosDetailViewController: UIViewController {
         
         /////////////////////////////////// TOP LABEL
         // Apply rounded corners for the bubble effect
-        txt_Detail_Description.layer.cornerRadius = 20
-        txt_Detail_Description.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
+        txt_Detail_Description.layer.cornerRadius = cornerRadius
+        txt_Detail_Description.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
         
         /////////////////////////////////// DETAILS TEXT VIEW
         // Apply rounded corners for the bubble effect
-        txt_Detail_Response.layer.cornerRadius = 20
+        txt_Detail_Response.layer.cornerRadius = cornerRadius
         //txt_Detail_Response.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         
         ///////////OTHER RESPONSES VIEW
-        view_BackgroundResponse.layer.cornerRadius = 20
-        txt_Other_Response.layer.cornerRadius = 20
+        view_BackgroundResponse.layer.cornerRadius = cornerRadius
+        txt_Other_Response.layer.cornerRadius = cornerRadius
         //txt_Facts.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
         txt_Other_Response.isScrollEnabled = false
         txt_Other_Response.text = current_Scenario.commonResponse
     
-        view_Other_Responses.layer.cornerRadius = 20
+        view_Other_Responses.layer.cornerRadius = cornerRadius
         
-        view_Facts.layer.cornerRadius = 20
+        view_Facts.layer.cornerRadius = cornerRadius
         txt_Facts.text = current_Scenario.facts
         //txt_Detail_Description.text = current_Scenario.tags.joined(separator: ", ")
     }
@@ -75,8 +76,6 @@ class ScenariosDetailViewController: UIViewController {
     @IBAction func btn_Send(_ sender: UIButton) {
         
         view_Other_Responses.isHidden = false
-        //lbl_Other_Response.isHidden = false
-        //txt_Other_Response.isHidden = false
         
         view_Facts.isHidden = false
         
