@@ -47,7 +47,7 @@ class ToolBoxDetailsViewController: UIViewController {
         txt_Content.text = current_ToolBox.content
         //Setup textview styles
         txt_Content.layer.cornerRadius = cornerRadius
-        txt_Content.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 10)
+        txt_Content.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         
     }
 }

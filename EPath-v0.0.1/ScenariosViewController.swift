@@ -78,7 +78,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
             print("Listener error:", error ?? "unknown")
             return
           }
-
               // rebuild local array
               self.listScenarioAll = snapshot.documents.map { doc in
                 Scenarios(
