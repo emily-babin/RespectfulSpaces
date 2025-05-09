@@ -118,7 +118,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="397" height="1250"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rQO-mY-x7G">
-                                                <rect key="frame" x="20" y="20" width="51" height="20.333333333333329"/>
+                                                <rect key="frame" x="16" y="20" width="365" height="20.333333333333329"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -192,7 +192,7 @@
                                                         </constraints>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </string>
                                                         <color key="textColor" systemColor="labelColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                 </subviews>
@@ -218,7 +218,7 @@
                                                         </constraints>
                                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </string>
                                                         <color key="textColor" systemColor="labelColor"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     </textView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWA-Hm-M3N" userLabel="Lbl Facts">
@@ -245,12 +245,13 @@
                                             <constraint firstItem="Ckh-aI-jy7" firstAttribute="leading" secondItem="cG6-tM-adv" secondAttribute="leading" constant="22" id="6hd-mq-tCh"/>
                                             <constraint firstItem="Ckh-aI-jy7" firstAttribute="top" secondItem="rQO-mY-x7G" secondAttribute="bottom" constant="18.666666666666686" id="BSe-8w-cB2"/>
                                             <constraint firstItem="kwg-kv-A05" firstAttribute="leading" secondItem="cG6-tM-adv" secondAttribute="leading" constant="22" id="DHj-ED-AXs"/>
+                                            <constraint firstAttribute="trailing" secondItem="rQO-mY-x7G" secondAttribute="trailing" constant="16" id="IjT-Ak-OZr"/>
                                             <constraint firstAttribute="trailing" secondItem="PRY-Gg-LBF" secondAttribute="trailing" constant="16" id="MG0-c5-Sqa"/>
                                             <constraint firstItem="kwg-kv-A05" firstAttribute="top" secondItem="Ckh-aI-jy7" secondAttribute="bottom" constant="19" id="Mv6-U1-H5E"/>
                                             <constraint firstAttribute="bottom" secondItem="spS-9h-hu2" secondAttribute="bottom" constant="55" id="OhW-5D-aUs"/>
                                             <constraint firstAttribute="height" constant="1250" id="Oxb-4N-cSr"/>
-                                            <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="rQO-mY-x7G" secondAttribute="trailing" constant="326" id="Q7F-cm-XZQ"/>
                                             <constraint firstItem="kwg-kv-A05" firstAttribute="leading" secondItem="Ckh-aI-jy7" secondAttribute="leading" id="Qgr-ex-pMx"/>
+                                            <constraint firstItem="rQO-mY-x7G" firstAttribute="leading" secondItem="cG6-tM-adv" secondAttribute="leading" constant="16" id="SWg-3d-U3E"/>
                                             <constraint firstAttribute="trailing" secondItem="Ckh-aI-jy7" secondAttribute="trailing" constant="16" id="Y5I-WK-WcX"/>
                                             <constraint firstItem="PRY-Gg-LBF" firstAttribute="leading" secondItem="cG6-tM-adv" secondAttribute="leading" constant="22" id="ava-yP-7NC"/>
                                             <constraint firstAttribute="trailing" secondItem="kwg-kv-A05" secondAttribute="trailing" constant="16" id="bOz-QK-gEA"/>
@@ -258,7 +259,6 @@
                                             <constraint firstItem="rQO-mY-x7G" firstAttribute="top" secondItem="cG6-tM-adv" secondAttribute="top" constant="20" id="hZ0-1Q-2Ei"/>
                                             <constraint firstItem="PRY-Gg-LBF" firstAttribute="top" secondItem="kwg-kv-A05" secondAttribute="bottom" constant="134" id="oHF-d8-JTi"/>
                                             <constraint firstItem="kwg-kv-A05" firstAttribute="trailing" secondItem="Ckh-aI-jy7" secondAttribute="trailing" id="p8F-w7-T8r"/>
-                                            <constraint firstItem="rQO-mY-x7G" firstAttribute="leading" secondItem="cG6-tM-adv" secondAttribute="leading" constant="20" symbolic="YES" id="qyq-Hb-sTK"/>
                                             <constraint firstItem="spS-9h-hu2" firstAttribute="top" secondItem="PRY-Gg-LBF" secondAttribute="bottom" constant="27" id="sJK-ci-wD3"/>
                                             <constraint firstItem="spS-9h-hu2" firstAttribute="leading" secondItem="cG6-tM-adv" secondAttribute="leading" constant="22" id="vnl-Zc-jXH"/>
                                         </constraints>
@@ -675,7 +675,7 @@
                                 </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
@@ -753,13 +753,13 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemPurpleColor">
-            <color red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseFirestore
+import CoreData
+import Network
 
 class ScenariosViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
 
@@ -14,15 +16,12 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     @IBOutlet weak var table: UITableView!
     
     var selectedScenario:Int = 0
-    let db = Firestore.firestore()
+    var repository = FirebaseRepository()
     var selectedItem = Scenarios()
-    var listScenarioAll: [Scenarios] = []
     var filteredScenarios: [Scenarios] = []
     
     var searchController = UISearchController()
     
-    private var scenariosListener: ListenerRegistration?
-
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -32,18 +31,20 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         setupTabBar()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        scenariosListener?.remove()
-    }
-    
     func setupTable() {
-        attachRealtimeListener()
         table.dataSource = self
         table.delegate = self
         table.separatorStyle = .none
         table.showsVerticalScrollIndicator = false
         table.keyboardDismissMode = .onDrag
+        
+        self.repository.startAll{
+            [weak self] in
+                DispatchQueue.main.async {
+                    self?.filteredScenarios = self?.repository.scenarios ?? []
+                    self?.table.reloadData()
+            }
+        }
     }
     
     func initSearchController() {
@@ -68,80 +69,17 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         // Ensure the context is defined to prevent weird UI behavior
         definesPresentationContext = true
     }
-    
-    func attachRealtimeListener() {
-      //detach any existing listener
-      scenariosListener?.remove()
-
-      scenariosListener = db.collection("Scenarios").order(by: "title").addSnapshotListener { [weak self] snapshot, error in
-          guard let self = self, let snapshot = snapshot else {
-            print("Listener error:", error ?? "unknown")
-            return
-          }
-              // rebuild local array
-              self.listScenarioAll = snapshot.documents.map { doc in
-                Scenarios(
-                  title: doc.get("title") as? String ?? "No Title",
-                  imageName: doc.get("type") as? String ?? "EMPATHY",
-                  description: doc.get("description") as? String ?? "No Description",
-                  content: doc.get("content") as? String ?? "No content",
-                  commonResponse: doc.get("common") as? String ?? "No Response",
-                  facts: doc.get("facts") as? String ?? "No Facts",
-                  tags: doc.get("tag") as? [String] ?? []
-                )
-              }
-
-              // Ensure UI updates happen on the main thread
-            DispatchQueue.main.async {
-                 self.updateSearchResults(for: self.searchController)
-            }
-        }
-    }
-    
-    /*func loadData() async{
-        
-        do {
-            let snapshot = try await db.collection("Scenarios").order(by: "title").getDocuments()
-    
-          for document in snapshot.documents {
-              let title = document.get("title") as? String ?? "No Title"
-              
-              //let tag = document.get("tag") as? String ?? "No Tag"
-              let imageName = document.get("type") as? String ?? "EMPATHY"
-              let description = document.get("description") as? String ?? "No Description"
-              let content = document.get("content") as? String ?? "No Content"
-            
-              let commonResponse = document.get("common") as? String ?? "No Response"
-              
-              let facts = document.get("facts") as? String ?? "No Facts"
-              
-              let tags = document.get("tag") as? [String] ?? []
-
-              let Scenario = Scenarios(title:title, imageName:imageName, description:description, content:content, commonResponse: commonResponse, facts: facts, tags: tags)
-              
-              listScenarioAll.append(Scenario)
-          }
-            
-        } catch {
-          print("Error getting documents: \(error)")
-        }
-        
-        filteredScenarios = listScenarioAll
-
-        self.table.reloadData()
-    }*/
-    
   
     func updateSearchResults(for searchController: UISearchController) {
         
         let searchText = searchController.searchBar.text ?? ""
         
         if searchText.isEmpty {
-            filteredScenarios = listScenarioAll
+            filteredScenarios = self.repository.scenarios
             self.table.reloadData()
             
         } else {
-            filteredScenarios = listScenarioAll.filter { scenario in
+            filteredScenarios = repository.scenarios.filter { scenario in
                 let matchesTitle = scenario.title.lowercased().contains(searchText.lowercased())
                 let matchesTags = scenario.tags.contains { tag in
                     tag.lowercased().contains(searchText.lowercased())
