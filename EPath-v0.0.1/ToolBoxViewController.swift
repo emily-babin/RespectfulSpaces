@@ -6,20 +6,16 @@
 //
 
 import UIKit
-import FirebaseFirestore
 
 class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating {
     
     @IBOutlet weak var table_Toolbox: UITableView!
 
     var selectedToolBox: Int = 0
-    
-    let db = Firestore.firestore()
     var selectedItem = ToolBox()
-    var listToolBoxAll: [ToolBox] = []
-    var filteredToolBox: [ToolBox] = []
-    var toolBoxListener: ListenerRegistration?
     
+    var filteredToolBox: [ToolBox] = []
+    var repository = FirebaseRepository()
     var searchController = UISearchController()
 
     override func viewDidLoad() {
@@ -27,7 +23,41 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         
         setupTable()
         setupNavBar()
+    }
+    
+    func setupTable() {
+        table_Toolbox.dataSource = self
+        table_Toolbox.delegate = self
+        table_Toolbox.keyboardDismissMode = .onDrag
         
+        self.repository.startAll {
+            [weak self] in
+                DispatchQueue.main.async {
+                    self?.filteredToolBox = self?.repository.toolBox ?? []
+                    self?.table_Toolbox.reloadData()
+            }
+        }
+    }
+    
+    func setupNavBar() {
+        
+        let navBarAppearance = UINavigationBarAppearance()
+        
+        //Custom RGB color for BUILD NS
+        navBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        //Set title text color
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        
+        //This will ensure the color of the nav bar above does not change when scrolling
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        
+        //This changes the color of the back button up in navigationw
+        navigationController?.navigationBar.tintColor = UIColor.white
+        
+        initSearchController()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -49,12 +79,7 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         }
     }
     
-    func setupTable() {
-        attachRealtimeListener()
-        table_Toolbox.dataSource = self
-        table_Toolbox.delegate = self
-        table_Toolbox.keyboardDismissMode = .onDrag
-    }
+ 
     
     func initSearchController() {
        
@@ -79,44 +104,16 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         definesPresentationContext = true
     }
     
-    func attachRealtimeListener() {
-        toolBoxListener?.remove()
-        
-        toolBoxListener = db.collection("ToolboxTalks").order(by: "title").addSnapshotListener { [weak self] snapshot, error in
-            guard let self = self, let snapshot = snapshot else {
-                print("Listener error:", error ?? "unknown")
-                return
-            }
-            
-            self.listToolBoxAll = snapshot.documents.map { doc in
-                ToolBox(
-                    title: doc.get("title") as? String ?? "No Title",
-                    imageName: doc.get("type") as? String ?? "EMPATHY",
-                    description: doc.get("description") as? String ?? "No Description",
-                    content: doc.get("text") as? String ?? "No text"
-                )
-            }
-            
-            self.filteredToolBox = self.listToolBoxAll
-
-            
-            DispatchQueue.main.async {
-                self.table_Toolbox.reloadData()
-            }
-        }
-    }
-    
-   
     func updateSearchResults(for searchController: UISearchController) {
         
         let searchText = searchController.searchBar.text ?? ""
         
         if searchText.isEmpty {
-            filteredToolBox = listToolBoxAll
+            filteredToolBox = self.repository.toolBox
             self.table_Toolbox.reloadData()
             
         } else {
-            filteredToolBox = listToolBoxAll.filter { toolbox in
+            filteredToolBox = self.repository.toolBox.filter { toolbox in
                 let matchesTitle = toolbox.title.lowercased().contains(searchText.lowercased())
                 let matchesTags = toolbox.content.contains { tag in
                     tag.lowercased().contains(searchText.lowercased())
@@ -163,27 +160,7 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         return cell
     }
     
-    func setupNavBar() {
-        
-        let navBarAppearance = UINavigationBarAppearance()
-        
-        //Custom RGB color for BUILD NS
-        navBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
-        
-        //Set title text color
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-
-        navigationController?.navigationBar.standardAppearance = navBarAppearance
-        
-        //This will ensure the color of the nav bar above does not change when scrolling
-        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        
-        //This changes the color of the back button up in navigationw
-        navigationController?.navigationBar.tintColor = UIColor.white
-        
-        initSearchController()
-    }
-    
+ 
     /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
             
         selectedScenario = indexPath.row
