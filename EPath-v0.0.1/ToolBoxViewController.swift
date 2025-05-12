@@ -54,6 +54,17 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         initSearchController()
     }
     
+    func setupTabBar() {
+        let tabBarAppearance = UITabBarAppearance()
+        
+        //Customer RGB color for BUILDNS
+        tabBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        //This will ensure the color of the tab bar stays the same and does not change when scrolling
+        tabBarController?.tabBar.standardAppearance = tabBarAppearance
+        tabBarController?.tabBar.scrollEdgeAppearance = tabBarAppearance
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectedToolBox = indexPath.section
@@ -72,8 +83,6 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
             ToolBoxDetailVC.current_ToolBox = filteredToolBox[selectedToolBox]
         }
     }
-    
- 
     
     func initSearchController() {
        
@@ -112,7 +121,7 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
                 let matchesTags = toolbox.content.contains { tag in
                     tag.lowercased().contains(searchText.lowercased())
                 }
-                let matchesDesc = toolbox.description.contains(searchText.lowercased())
+                let matchesDesc = toolbox.description.lowercased().contains(searchText.lowercased())
                 
                 return matchesTitle || matchesTags || matchesDesc
             }
