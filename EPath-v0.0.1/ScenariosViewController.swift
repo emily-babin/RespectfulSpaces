@@ -16,16 +16,14 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     @IBOutlet weak var table: UITableView!
     
     var selectedScenario:Int = 0
-    var repository = FirebaseRepository()
+    var repository = FirebaseRepository.shared
     var selectedItem = Scenarios()
     var filteredScenarios: [Scenarios] = []
     
     var searchController = UISearchController()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         setupTable()
         setupNavBar()
         setupTabBar()
@@ -38,17 +36,11 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         table.showsVerticalScrollIndicator = false
         table.keyboardDismissMode = .onDrag
         
-        self.repository.startAll{
-            [weak self] in
-                DispatchQueue.main.async {
-                    self?.filteredScenarios = self?.repository.scenarios ?? []
-                    self?.table.reloadData()
-            }
-        }
+        self.filteredScenarios = repository.scenarios
+        self.table.reloadData()
     }
     
     func initSearchController() {
-       
         //searchResultsController: nil means the search results will be shown in the same view controller, not a separate one.
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -71,11 +63,11 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     }
   
     func updateSearchResults(for searchController: UISearchController) {
-        
+
         let searchText = searchController.searchBar.text ?? ""
         
         if searchText.isEmpty {
-            filteredScenarios = self.repository.scenarios
+            filteredScenarios = repository.scenarios
             self.table.reloadData()
             
         } else {
@@ -89,8 +81,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
             self.table.reloadData()
         }
     }
-    
-    
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
@@ -169,7 +159,6 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     }
 
     func setupTabBar() {
-        
         //Fix Tab Bar Color Change Issue
         let tabBarAppearance = UITabBarAppearance()
        
