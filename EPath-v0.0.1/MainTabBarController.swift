@@ -10,27 +10,36 @@ import UIKit
 class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     private var lastSelectedIndex = 0
+    var repository = FirebaseRepository.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        delegate = self
-        
+        setupRepo()
+        setupTabBar()
+        setupNavBar()
+    }
+    
+    func setupRepo() {
+        self.repository.startAll {
+            print("repo started")
+        }
+    }
+    
+    func setupTabBar() {
         let tabBarAppearance = UITabBarAppearance()
         tabBarAppearance.backgroundColor = UIColor(red: 222/255, green: 61/255, blue: 38/255, alpha: 1.0)
-
-        
+        tabBar.unselectedItemTintColor = .white
+        delegate = self
+    }
+    
+    func setupNavBar() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.backgroundColor = UIColor(red: 222/255, green: 61/255, blue: 38/255, alpha: 1.0)
 
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-      
-        tabBar.unselectedItemTintColor = .white
-  
-     
-     }
+    }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
         

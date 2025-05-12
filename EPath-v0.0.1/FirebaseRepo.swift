@@ -13,6 +13,9 @@ import Network
 // Coordinates Firestore and Core Data syncing and provides an in-memory array for the UI.
 class FirebaseRepository {
     
+    static let shared = FirebaseRepository()
+    private init () {}
+    
     private let db = Firestore.firestore() //Firestore connection
     private let monitor = NWPathMonitor() //Monitors if internet or no
     private var scenarioListener: ListenerRegistration? //Holds Firestore listener so we can remove it
@@ -168,7 +171,7 @@ class FirebaseRepository {
     private func loadFromScenariosCoreData() {
         let req: NSFetchRequest<ScenariosEntity> = ScenariosEntity.fetchRequest()
         // Sort by timestamp descending so newest appear first
-        req.sortDescriptors = [NSSortDescriptor(key: "timestamp", ascending: false)]
+        req.sortDescriptors = [NSSortDescriptor(key: "timeStamp", ascending: false)]
         if let entities = try? coreDataStack.viewContext.fetch(req) {
             // Map Core Data entities back into plain Swift structs for the UI
             scenarios = entities.map { entity in

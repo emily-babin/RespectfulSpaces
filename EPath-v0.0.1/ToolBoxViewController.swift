@@ -13,9 +13,8 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
 
     var selectedToolBox: Int = 0
     var selectedItem = ToolBox()
-    
+    var repository = FirebaseRepository.shared
     var filteredToolBox: [ToolBox] = []
-    var repository = FirebaseRepository()
     var searchController = UISearchController()
 
     override func viewDidLoad() {
@@ -30,13 +29,8 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         table_Toolbox.delegate = self
         table_Toolbox.keyboardDismissMode = .onDrag
         
-        self.repository.startAll {
-            [weak self] in
-                DispatchQueue.main.async {
-                    self?.filteredToolBox = self?.repository.toolBox ?? []
-                    self?.table_Toolbox.reloadData()
-            }
-        }
+        self.filteredToolBox = repository.toolBox
+        self.table_Toolbox.reloadData()
     }
     
     func setupNavBar() {
@@ -60,6 +54,17 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         initSearchController()
     }
     
+    func setupTabBar() {
+        let tabBarAppearance = UITabBarAppearance()
+        
+        //Customer RGB color for BUILDNS
+        tabBarAppearance.backgroundColor = UIColor(red: 221/255, green: 64/255, blue: 38/255, alpha: 1.0)
+        
+        //This will ensure the color of the tab bar stays the same and does not change when scrolling
+        tabBarController?.tabBar.standardAppearance = tabBarAppearance
+        tabBarController?.tabBar.scrollEdgeAppearance = tabBarAppearance
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectedToolBox = indexPath.section
@@ -78,8 +83,6 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
             ToolBoxDetailVC.current_ToolBox = filteredToolBox[selectedToolBox]
         }
     }
-    
- 
     
     func initSearchController() {
        
@@ -109,16 +112,18 @@ class ToolBoxViewController: UIViewController , UITableViewDelegate, UITableView
         let searchText = searchController.searchBar.text ?? ""
         
         if searchText.isEmpty {
-            filteredToolBox = self.repository.toolBox
+            filteredToolBox = repository.toolBox
             self.table_Toolbox.reloadData()
             
         } else {
-            filteredToolBox = self.repository.toolBox.filter { toolbox in
+            filteredToolBox = repository.toolBox.filter { toolbox in
                 let matchesTitle = toolbox.title.lowercased().contains(searchText.lowercased())
                 let matchesTags = toolbox.content.contains { tag in
                     tag.lowercased().contains(searchText.lowercased())
                 }
-                return matchesTitle || matchesTags
+                let matchesDesc = toolbox.description.lowercased().contains(searchText.lowercased())
+                
+                return matchesTitle || matchesTags || matchesDesc
             }
             table_Toolbox.reloadData()
         }
