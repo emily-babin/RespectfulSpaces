@@ -21,6 +21,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
     var filteredScenarios: [Scenarios] = []
     
     var searchController = UISearchController()
+    var styledSearchBar = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,12 +40,41 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
         self.filteredScenarios = repository.scenarios
         self.table.reloadData()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
+
+        if(!styledSearchBar) {
+            searchController.searchBar.searchTextField.textColor = .white
+            styledSearchBar = true
+        }
+    }
     
     func initSearchController() {
         //searchResultsController: nil means the search results will be shown in the same view controller, not a separate one.
         searchController = UISearchController(searchResultsController: nil)
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.placeholder = "Search"
+        
+        if let searchBarTextField = searchController.searchBar.value(forKey: "searchField") as? UITextField {
+                
+            searchBarTextField.backgroundColor = UIColor.white.withAlphaComponent(0.10)
+            searchBarTextField.layer.cornerRadius = 8
+            searchBarTextField.clipsToBounds = true
+            
+            let glassIconView = searchBarTextField.leftView as! UIImageView
+            glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+            glassIconView.tintColor = .white
+            
+            // Set placeholder color
+            searchBarTextField.attributedPlaceholder = NSAttributedString(
+                string: "Search",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+            )
+        }
+
+       
+        //WHITE TINT FOR CANCEL
+        searchController.searchBar.tintColor = .white
         
         //Assigns the current view controller (self) as the object that responds to search updates.
         searchController.searchResultsUpdater = self
@@ -60,6 +90,7 @@ class ScenariosViewController: UIViewController , UITableViewDelegate, UITableVi
        
         // Ensure the context is defined to prevent weird UI behavior
         definesPresentationContext = true
+        
     }
   
     func updateSearchResults(for searchController: UISearchController) {
