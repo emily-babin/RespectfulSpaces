@@ -30,14 +30,28 @@ class ScenariosViewController: BaseViewController , UITableViewDelegate, UITable
         setupTableData()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-
     func setupTableData() {
         self.filteredScenarios = repository.scenarios
         self.table.reloadData()
     }
+    
+    /*
+    override func setupNavBar() {
+        super.setupNavBar()
+        // 3. Create the book icon button
+        let bookImage = UIImage(systemName: "book.fill")
+        let bookButton = UIBarButtonItem(
+            image: bookImage,
+            style: .plain,
+            target: self,
+            action: #selector(bookButtonTapped)
+        )
+
+        bookButton.tintColor = UIColor.white
+
+        // 4. Add it to the right side of the nav bar
+        navigationItem.rightBarButtonItem = bookButton
+    }*/
     
     override func updateSearchResults(for searchController: UISearchController) {
 

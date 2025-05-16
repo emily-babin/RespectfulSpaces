@@ -14,7 +14,6 @@ class BaseViewController: UIViewController, UISearchResultsUpdating {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        initSearchController()
         setupNavBar()
         setupTabBar()
     }
@@ -76,6 +75,7 @@ class BaseViewController: UIViewController, UISearchResultsUpdating {
        
         // Ensure the context is defined to prevent weird UI behavior
         definesPresentationContext = true
+        
     }
     
     func updateSearchResults(for searchController: UISearchController) {
@@ -102,8 +102,27 @@ class BaseViewController: UIViewController, UISearchResultsUpdating {
         navigationController?.navigationBar.tintColor = UIColor.white
         
         initSearchController()
+        
     }
     
+    /*
+    @objc
+     func bookButtonTapped() {
+         
+         //Dismiss/hide the search UI immediately
+         if searchController.isActive {
+           searchController.dismiss(animated: true)
+           searchController.searchBar.text = ""
+         }
+         
+        
+         //Delay the push to the next run loop
+         DispatchQueue.main.async {
+             let libraryVC = BookViewController()
+             self.navigationController?.pushViewController(libraryVC, animated: false)
+         }
+     }*/
+
     func setupTabBar() {
         //Fix Tab Bar Color Change Issue
         let tabBarAppearance = UITabBarAppearance()
