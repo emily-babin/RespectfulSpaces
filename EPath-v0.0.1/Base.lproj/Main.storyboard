@@ -737,14 +737,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="house" catalog="system" width="128" height="104"/>
-        <image name="house.fill" catalog="system" width="128" height="104"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
-        <image name="person.3" catalog="system" width="128" height="66"/>
-        <image name="person.3.fill" catalog="system" width="128" height="66"/>
+        <image name="house" catalog="system" width="32" height="32"/>
+        <image name="house.fill" catalog="system" width="32" height="32"/>
+        <image name="line.3.horizontal" catalog="system" width="32" height="32"/>
+        <image name="person.3" catalog="system" width="32" height="32"/>
+        <image name="person.3.fill" catalog="system" width="32" height="32"/>
         <image name="perspective_placeholder" width="33.333332061767578" height="33.333332061767578"/>
-        <image name="wrench.and.screwdriver" catalog="system" width="128" height="119"/>
-        <image name="wrench.and.screwdriver.fill" catalog="system" width="128" height="119"/>
+        <image name="wrench.and.screwdriver" catalog="system" width="32" height="32"/>
+        <image name="wrench.and.screwdriver.fill" catalog="system" width="32" height="32"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
