@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ScenariosDetailViewController: UIViewController {
+class ScenariosDetailViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -56,11 +56,12 @@ class ScenariosDetailViewController: UIViewController {
         txt_Detail_Description.layer.cornerRadius = cornerRadius
         txt_Detail_Description.textContainerInset = UIEdgeInsets(top: paddingInsets, left: paddingInsets, bottom: 0, right: paddingInsets)
         
-        /////////////////////////////////// DETAILS TEXT VIEW
+        /////////////////////////////////// DETAILS RESPONSE TEXT VIEW
         // Apply rounded corners for the bubble effect
         txt_Detail_Response.layer.cornerRadius = cornerRadius
         //txt_Detail_Response.textContainerInset = UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15)
-        
+        txt_Detail_Response.delegate = self
+
         ///////////OTHER RESPONSES VIEW
         view_BackgroundResponse.layer.cornerRadius = cornerRadius
         txt_Other_Response.layer.cornerRadius = cornerRadius
@@ -74,8 +75,28 @@ class ScenariosDetailViewController: UIViewController {
         //txt_Detail_Description.text = current_Scenario.tags.joined(separator: ", ")
     }
     
+
     @IBAction func View_Tapped(_ sender: UITapGestureRecognizer) {
         txt_Detail_Response.resignFirstResponder()
+    }
+    
+    /*before changes, scenario detail response
+     when user taps on textview keyboard will cover the entire textview hindering visibility.
+
+     added a textview delegate to manage that interaction
+
+     textviewdidbeginediting will be triggered and scrolls the view to where it will not be covered by the keyboard*/
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        scrollView.isScrollEnabled = true
+        
+        //DispatchQueue.main.async makes sure that this action happens on the mainthread where ui code should occur
+        //If UI code is run on back thread, it may lead to crashes or unexpected behavior
+        DispatchQueue.main.async {
+            var paddedFrameResponse = self.view_BackgroundResponse.frame
+            paddedFrameResponse.size.height += 260
+            
+            self.scrollView.scrollRectToVisible(paddedFrameResponse, animated: true)
+        }
     }
     
     @IBAction func btn_Send(_ sender: UIButton) {
@@ -84,23 +105,24 @@ class ScenariosDetailViewController: UIViewController {
         
         view_Facts.isHidden = false
         
-        //scrollview enable now so that user can go back up to look at content again
+        //scrollview enabled now so that user can go back up to look at content again
         scrollView.isScrollEnabled = true
-        
         /*let fixedWidth = txt_Other_Response.frame.size.width
-        
+               
         //Calculate the new size for the text view based on its content, allowing unlimited height
-        
+       
         let newSize = txt_Other_Response.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-        
+       
         let newSizeFacts = txt_Facts.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
-                
+               
         //greatestfinitemagnitude is used for the dynamic height based on the content
-        
+       
         //Update the height constraint of the text view to reflect the new calculated height
         txt_Other_Response_Height.constant = newSize.height
         txt_Facts_Height.constant = newSizeFacts.height*/
         
+        //DispatchQueue.main.async makes sure that this action happens on the mainthread where ui code should occur
+        //If UI code is run on back thread, it may lead to crashes or unexpected behavior
         DispatchQueue.main.async {
             var paddedFrame = self.view_Facts.frame
             paddedFrame.size.height += 20
