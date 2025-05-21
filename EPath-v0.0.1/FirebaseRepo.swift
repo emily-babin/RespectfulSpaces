@@ -70,7 +70,7 @@ class FirebaseRepository {
             let models = snap.documents.map { doc -> Scenarios in
               Scenarios(
                 title: doc.get("title") as? String ?? "No Title Yet",
-                imageName: doc.get("type") as? String ?? "EMPATHY",
+                imageName: doc.get("type") as? String ?? "scenario_placeholder",
                 description: doc.get("description") as? String ?? "No Description Yet",
                 content: doc.get("content") as? String ?? "No Content Yet",
                 commonResponse: doc.get("common") as? String ?? "No Responses Yet",
@@ -95,7 +95,7 @@ class FirebaseRepository {
             // Map each Firestore document into our plain Swift struct
             let models = snap.documents.map { doc -> ToolBox in
                 ToolBox(title: doc.get("title") as? String ?? "No Title Yet",
-                        imageName: doc.get("type") as? String ?? "EMPATHY",
+                        imageName: doc.get("type") as? String ?? "toolbox_placeholder",
                         description: doc.get("description") as? String ?? "No Description Yet",
                         content: doc.get("text") as? String ?? "No Content Yet")
             }
