@@ -59,18 +59,21 @@ class ScenariosViewController: BaseViewController , UITableViewDelegate, UITable
         
         if searchText.isEmpty {
             filteredScenarios = repository.scenarios
-            self.table.reloadData()
             
         } else {
             filteredScenarios = repository.scenarios.filter { scenario in
                 let matchesTitle = scenario.title.lowercased().contains(searchText.lowercased())
+                
                 let matchesTags = scenario.tags.contains { tag in
                     tag.lowercased().contains(searchText.lowercased())
                 }
-                return matchesTitle || matchesTags
+                
+                let matchesDesc = scenario.description.lowercased().contains(searchText.lowercased())
+                
+                return matchesTitle || matchesTags || matchesDesc
             }
-            self.table.reloadData()
         }
+        self.table.reloadData()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
